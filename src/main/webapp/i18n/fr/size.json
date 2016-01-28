@@ -1,0 +1,23 @@
+{
+    "refugeesApp": {
+        "size" : {
+            "home": {
+                "title": "Sizes",
+                "createLabel": "Créer un nouveau Size",
+                "createOrEditLabel": "Créer ou éditer un Size",
+                "search": "Search for Size"
+            },
+            "created": "Un nouveau Size a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Size avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Size avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Size {{ id }} ?"
+            },
+            "detail": {
+                "title": "Size"
+            },
+            "value": "Value"
+        }
+    }
+}
+

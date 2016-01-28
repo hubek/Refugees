@@ -1,0 +1,22 @@
+{
+    "refugeesApp": {
+        "organizationType" : {
+            "home": {
+                "title": "OrganizationTypes",
+                "createLabel": "Create a new OrganizationType",
+                "createOrEditLabel": "Create or edit a OrganizationType",
+                "search": "Search for OrganizationType"
+            },
+            "created": "A new OrganizationType is created with identifier {{ param }}",
+            "updated": "A OrganizationType is updated with identifier {{ param }}",
+            "deleted": "A OrganizationType is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete OrganizationType {{ id }}?"
+            },
+            "detail": {
+                "title": "OrganizationType"
+            },
+            "name": "Name"
+        }
+    }
+}
