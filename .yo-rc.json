@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "refugees",
+    "packageName": "de.zalando.refugees",
+    "packageFolder": "de/zalando/refugees",
+    "authenticationType": "oauth2",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "a8e76046d83ab4aef811b8fd54e4ee5ac4f98670",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}
