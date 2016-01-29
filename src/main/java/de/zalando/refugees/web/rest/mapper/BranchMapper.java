@@ -4,6 +4,7 @@ import de.zalando.refugees.domain.*;
 import de.zalando.refugees.web.rest.dto.BranchDTO;
 
 import org.mapstruct.*;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Mapper for the entity Branch and its DTO BranchDTO.

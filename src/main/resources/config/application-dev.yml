@@ -15,31 +15,33 @@ spring:
         active: dev
     devtools:
         restart:
-            enabled: false
+            enabled: true
         livereload:
-            enabled: false
+            enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
-        driver-class-name: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://localhost:7200/refugees?useUnicode=true&characterEncoding=utf8
+        driver-class-name: org.h2.jdbcx.JdbcDataSource
+        url: jdbc:h2:mem:refugees;DB_CLOSE_DELAY=-1
         name:
-        username: root
-        password: root
+        username: refugees
+        password:
+    h2:
+        console:
+            enabled: false
     jpa:
-        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
-        database: MYSQL
-        show_sql: false
+        database-platform: de.zalando.refugees.domain.util.FixedH2Dialect
+        database: H2
+        show_sql: true
         properties:
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: false
+            hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
     mail:
         host: localhost
-        port: 25
-        username:
-        password:
+    messages:
+        cache-seconds: 1
     thymeleaf:
-        cache: true
+        cache: false
 
 liquibase:
     contexts: prod
