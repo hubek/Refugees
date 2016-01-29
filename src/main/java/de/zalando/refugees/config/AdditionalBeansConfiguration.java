@@ -1,5 +1,6 @@
 package de.zalando.refugees.config;
 
+import de.zalando.refugees.web.rest.mapper.implementation.AppUserMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.BranchMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.OrganizationMapperImpl;
 
@@ -17,9 +18,15 @@ public class AdditionalBeansConfiguration
 	}
 	
 	@Bean
-	public BranchMapperImpl BranchMapperImpl()
+	public BranchMapperImpl branchMapperImpl()
 	{
 		return new BranchMapperImpl();
+	}
+	
+	@Bean
+	public AppUserMapperImpl appUserMapperImpl()
+	{
+		return new AppUserMapperImpl();
 	}
 
 }

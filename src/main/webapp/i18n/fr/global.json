@@ -14,7 +14,8 @@
                 "branch": "Branch",
                 "season": "Season",
                 "gender": "Gender",
-                "donation_condtition": "Donation_condtition",
+                "donationCondition": "DonationCondition",
+                "appUser": "AppUser",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
