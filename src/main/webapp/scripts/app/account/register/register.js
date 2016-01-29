@@ -5,7 +5,7 @@ angular.module('refugeesApp')
         $stateProvider
             .state('register', {
                 parent: 'account',
-                url: '/register',
+                url: '/appUsers',
                 data: {
                     authorities: [],
                     pageTitle: 'register.title'
