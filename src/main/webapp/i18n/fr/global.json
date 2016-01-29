@@ -12,6 +12,9 @@
                 "size": "Size",
                 "organization": "Organization",
                 "branch": "Branch",
+                "season": "Season",
+                "gender": "Gender",
+                "donation_condtition": "Donation_condtition",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

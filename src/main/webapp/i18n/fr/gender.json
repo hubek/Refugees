@@ -1,0 +1,23 @@
+{
+    "refugeesApp": {
+        "gender" : {
+            "home": {
+                "title": "Genders",
+                "createLabel": "Créer un nouveau Gender",
+                "createOrEditLabel": "Créer ou éditer un Gender",
+                "search": "Search for Gender"
+            },
+            "created": "Un nouveau Gender a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Gender avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Gender avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Gender {{ id }} ?"
+            },
+            "detail": {
+                "title": "Gender"
+            },
+            "value": "Value"
+        }
+    }
+}
+

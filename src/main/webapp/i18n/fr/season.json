@@ -1,0 +1,23 @@
+{
+    "refugeesApp": {
+        "season" : {
+            "home": {
+                "title": "Seasons",
+                "createLabel": "Créer un nouveau Season",
+                "createOrEditLabel": "Créer ou éditer un Season",
+                "search": "Search for Season"
+            },
+            "created": "Un nouveau Season a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Season avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Season avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Season {{ id }} ?"
+            },
+            "detail": {
+                "title": "Season"
+            },
+            "value": "Value"
+        }
+    }
+}
+
