@@ -1,0 +1,66 @@
+<div>
+    <h2 translate="refugeesApp.organization.home.title">Organizations</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="organization.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="refugeesApp.organization.home.createLabel">Create new Organization
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="refugeesApp.organization.name">Name</span></th>
+                    <th><span translate="refugeesApp.organization.phone">Phone</span></th>
+                    <th><span translate="refugeesApp.organization.email">Email</span></th>
+                    <th><span translate="refugeesApp.organization.address">Address</span></th>
+                    <th><span translate="refugeesApp.organization.type">type</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="organization in organizations track by organization.id">
+                    <td><a ui-sref="organization.detail({id:organization.id})">{{organization.id}}</a></td>
+                    <td>{{organization.name}}</td>
+                    <td>{{organization.phone}}</td>
+                    <td>{{organization.email}}</td>
+                    <td>{{organization.address}}</td>
+                    <td>
+                        <a ui-sref="organizationType.detail({id:organization.typeId})">{{organization.typeId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="organization.detail({id:organization.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="organization.edit({id:organization.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="organization.delete({id:organization.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="refugeesApp.branch.detail.title">Branch</span> {{branch.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.branch.address">Address</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{branch.address}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.branch.phone">Phone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{branch.phone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.branch.email">Email</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{branch.email}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.branch.organization">organization</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="organization.detail({id:branch.organizationId})">{{branch.organizationId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
