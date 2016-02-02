@@ -1,2 +1,2 @@
-#mvnw clean install -DskipTests
+./mvnw clean package -DskipTests
 web: java -Dserver.port=$PORT -jar target/*.war
