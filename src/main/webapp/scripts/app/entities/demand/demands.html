@@ -1,0 +1,81 @@
+<div>
+    <h2 translate="refugeesApp.demand.home.title">Demands</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="demand.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="refugeesApp.demand.home.createLabel">Create new Demand
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="quantity"><span translate="refugeesApp.demand.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="branchId"><span translate="refugeesApp.demand.branch">branch</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="categoryName"><span translate="refugeesApp.demand.category">category</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="seasonValue"><span translate="refugeesApp.demand.season">season</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="genderValue"><span translate="refugeesApp.demand.gender">gender</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="donationConditionValue"><span translate="refugeesApp.demand.donationCondition">donationCondition</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sizeValue"><span translate="refugeesApp.demand.size">size</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="demand in demands track by demand.id">
+                    <td><a ui-sref="demand.detail({id:demand.id})">{{demand.id}}</a></td>
+                    <td>{{demand.quantity}}</td>
+                    <td>
+                        <a ui-sref="branch.detail({id:demand.branchId})">{{demand.branchId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="category.detail({id:demand.categoryId})">{{demand.categoryName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="season.detail({id:demand.seasonId})">{{demand.seasonValue}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="gender.detail({id:demand.genderId})">{{demand.genderValue}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="donationCondition.detail({id:demand.donationConditionId})">{{demand.donationConditionValue}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="size.detail({id:demand.sizeId})">{{demand.sizeValue}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="demand.detail({id:demand.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="demand.edit({id:demand.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="demand.delete({id:demand.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>

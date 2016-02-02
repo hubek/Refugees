@@ -1,5 +1,8 @@
 package de.zalando.refugees.config;
 
+import de.zalando.refugees.domain.Demand;
+import de.zalando.refugees.web.rest.dto.DemandDTO;
+import de.zalando.refugees.web.rest.mapper.DemandMapper;
 import de.zalando.refugees.web.rest.mapper.implementation.AppUserMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.BranchMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.OrganizationMapperImpl;
@@ -28,5 +31,4 @@ public class AdditionalBeansConfiguration
 	{
 		return new AppUserMapperImpl();
 	}
-
 }

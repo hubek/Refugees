@@ -16,6 +16,7 @@
                 "gender": "Gender",
                 "donationCondition": "DonationCondition",
                 "appUser": "AppUser",
+                "demand": "Demand",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

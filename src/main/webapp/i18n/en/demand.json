@@ -1,0 +1,28 @@
+{
+    "refugeesApp": {
+        "demand" : {
+            "home": {
+                "title": "Demands",
+                "createLabel": "Create a new Demand",
+                "createOrEditLabel": "Create or edit a Demand",
+                "search": "Search for Demand"
+            },
+            "created": "A new Demand is created with identifier {{ param }}",
+            "updated": "A Demand is updated with identifier {{ param }}",
+            "deleted": "A Demand is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Demand {{ id }}?"
+            },
+            "detail": {
+                "title": "Demand"
+            },
+            "quantity": "Quantity",
+            "branch": "Branch",
+            "category": "Category",
+            "season": "Season",
+            "gender": "Gender",
+            "donationCondition": "DonationCondition",
+            "size": "Size"
+        }
+    }
+}
