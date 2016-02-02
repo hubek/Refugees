@@ -73,3 +73,14 @@ To setup this project in Jenkins, use the following configuration:
 [Karma]: http://karma-runner.github.io/
 [Jasmine]: http://jasmine.github.io/2.0/introduction.html
 [Protractor]: https://angular.github.io/protractor/
+
+# Heroku run
+To run on heroku we have to:
+ 
+1.  install other buildpack for java 8:
+
+    heroku buildpacks:set https://github.com/heroku/heroku-buildpack-java
+
+2.  Create file Procfile with content:
+
+    web: java -Dserver.port=$PORT -jar target/*.war
