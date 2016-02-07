@@ -1,6 +1,7 @@
 package de.zalando.refugees.service;
 
 import de.zalando.refugees.domain.Demand;
+import de.zalando.refugees.domain.DemandSpecification;
 import de.zalando.refugees.repository.DemandRepository;
 import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.mapper.DemandMapper;
@@ -22,56 +23,77 @@ import java.util.stream.Collectors;
  */
 @Service
 @Transactional
-public class DemandService {
+public class DemandService
+{
 
-    private final Logger log = LoggerFactory.getLogger(DemandService.class);
-    
-    @Inject
-    private DemandRepository demandRepository;
-    
-    @Inject
-    private DemandMapper demandMapper;
-    
-    /**
-     * Save a demand.
-     * @return the persisted entity
-     */
-    public DemandDTO save(DemandDTO demandDTO) {
-        log.debug("Request to save Demand : {}", demandDTO);
-        Demand demand = demandMapper.demandDTOToDemand(demandDTO);
-        demand = demandRepository.save(demand);
-        DemandDTO result = demandMapper.demandToDemandDTO(demand);
-        return result;
-    }
+	private final Logger log = LoggerFactory.getLogger( DemandService.class );
 
-    /**
-     *  get all the demands.
-     *  @return the list of entities
-     */
-    @Transactional(readOnly = true) 
-    public Page<Demand> findAll(Pageable pageable) {
-        log.debug("Request to get all Demands");
-        Page<Demand> result = demandRepository.findAll(pageable); 
-        return result;
-    }
+	@Inject
+	private DemandRepository demandRepository;
 
-    /**
-     *  get one demand by id.
-     *  @return the entity
-     */
-    @Transactional(readOnly = true) 
-    public DemandDTO findOne(Long id) {
-        log.debug("Request to get Demand : {}", id);
-        Demand demand = demandRepository.findOne(id);
-        DemandDTO demandDTO = demandMapper.demandToDemandDTO(demand);
-        return demandDTO;
-    }
+	@Inject
+	private DemandMapper demandMapper;
 
-    /**
-     *  delete the  demand by id.
-     */
-    public void delete(Long id) {
-        log.debug("Request to delete Demand : {}", id);
-        demandRepository.delete(id);
-    }
+	/**
+	 * Save a demand.
+	 * 
+	 * @return the persisted entity
+	 */
+	public DemandDTO save( DemandDTO demandDTO )
+	{
+		log.debug( "Request to save Demand : {}", demandDTO );
+		Demand demand = demandMapper.demandDTOToDemand( demandDTO );
+		demand = demandRepository.save( demand );
+		DemandDTO result = demandMapper.demandToDemandDTO( demand );
+		return result;
+	}
+
+	/**
+	 * get all the demands.
+	 * 
+	 * @return the list of entities
+	 */
+	@Transactional( readOnly = true )
+	public Page< Demand > findAll( Pageable pageable )
+	{
+		log.debug( "Request to get all Demands" );
+		Page< Demand > result = demandRepository.findAll( pageable );
+		return result;
+	}
+
+	/**
+	 * get one demand by id.
+	 * 
+	 * @return the entity
+	 */
+	@Transactional( readOnly = true )
+	public DemandDTO findOne( Long id )
+	{
+		log.debug( "Request to get Demand : {}", id );
+		Demand demand = demandRepository.findOne( id );
+		DemandDTO demandDTO = demandMapper.demandToDemandDTO( demand );
+		return demandDTO;
+	}
+
+	/**
+	 * delete the demand by id.
+	 */
+	public void delete( Long id )
+	{
+		log.debug( "Request to delete Demand : {}", id );
+		demandRepository.delete( id );
+	}
+
+	/**
+	 * Get All Demands By Filter
+	 * @param pageable
+	 * @param demand
+	 * @return 
+	 */
+	public Page< Demand > findAllByFilter( Pageable pageable, Demand demand )
+	{
+		DemandSpecification sp = new DemandSpecification( demand );
+
+		return demandRepository.findAll( sp, pageable );
+	}
 }
