@@ -23,6 +23,8 @@ angular.module('refugeesApp')
                 phone: null,
                 email: null,
                 address: null,
+                lang: null,
+                lat: null,
                 id: null
             };
         };

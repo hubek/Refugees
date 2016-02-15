@@ -2,14 +2,21 @@ package de.zalando.refugees.service;
 
 import de.zalando.refugees.domain.Demand;
 import de.zalando.refugees.domain.DemandSpecification;
+import de.zalando.refugees.domain.util.DemandComparator;
 import de.zalando.refugees.repository.DemandRepository;
 import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.mapper.DemandMapper;
+
+import org.aspectj.weaver.patterns.ReferencePointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.maps.model.LatLng;
+
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -25,6 +32,8 @@ import java.util.stream.Collectors;
 @Transactional
 public class DemandService
 {
+	@Autowired
+	GeoCodingService geoCodingService;
 
 	private final Logger log = LoggerFactory.getLogger( DemandService.class );
 
@@ -95,5 +104,19 @@ public class DemandService
 		DemandSpecification sp = new DemandSpecification( demand );
 
 		return demandRepository.findAll( sp, pageable );
+	}
+	
+	/**
+	 * Sort the returned demands by the distance from the reference point
+	 * @param demands : List of demands
+	 * @param referencePoint : LatLng instance represent the coordinations of the reference point
+	 * @return Sorted list of demands by distance
+	 */
+	public List<Demand > sortByDistance( List< Demand > demands, LatLng referencePoint)
+	{
+		DemandComparator demandComparator = new DemandComparator( geoCodingService, referencePoint );
+		demands.sort( demandComparator );
+		
+		return demands;
 	}
 }

@@ -25,6 +25,12 @@ public class OrganizationDTO implements Serializable {
     private String address;
 
 
+    private Double lang;
+
+
+    private Double lat;
+
+
     private Long typeId;
     public Long getId() {
         return id;
@@ -60,6 +66,20 @@ public class OrganizationDTO implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public Double getLang() {
+        return lang;
+    }
+
+    public void setLang(Double lang) {
+        this.lang = lang;
+    }
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
     public Long getTypeId() {
@@ -98,6 +118,8 @@ public class OrganizationDTO implements Serializable {
             ", phone='" + phone + "'" +
             ", email='" + email + "'" +
             ", address='" + address + "'" +
+            ", lang='" + lang + "'" +
+            ", lat='" + lat + "'" +
             '}';
     }
 }

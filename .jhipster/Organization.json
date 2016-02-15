@@ -32,6 +32,18 @@
             "fieldName": "address",
             "fieldType": "String",
             "fieldValidateRules": []
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "lang",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "lat",
+            "fieldType": "Double",
+            "fieldValidateRules": []
         }
     ],
     "changelogDate": "20160129093634",

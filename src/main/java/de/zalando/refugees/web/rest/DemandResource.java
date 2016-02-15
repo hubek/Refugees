@@ -1,6 +1,8 @@
 package de.zalando.refugees.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.maps.model.LatLng;
+
 import de.zalando.refugees.domain.Demand;
 import de.zalando.refugees.service.DemandService;
 import de.zalando.refugees.web.rest.util.HeaderUtil;
@@ -121,13 +123,17 @@ public class DemandResource
 						produces = MediaType.APPLICATION_JSON_VALUE )
 	@Timed
 	@Transactional( readOnly = true )
-	public ResponseEntity< List< DemandDTO > > getAllDemandsByFilter( Pageable pageable, DemandDTO demandDTO )
+	public ResponseEntity< List< DemandDTO > > getAllDemandsByFilter( Pageable pageable, DemandDTO demandDTO, LatLng referencePoint )
 			throws URISyntaxException
 	{
 		log.debug( "REST request to get a page of Demands" );
 		
 		Page< Demand > page = demandService.findAllByFilter( pageable, demandMapper.demandDTOToDemand( demandDTO ) );
+		
+		List< Demand > orderedDemands = demandService.sortByDistance( page.getContent().stream().collect( Collectors.toCollection( LinkedList::new ) ), referencePoint ); 
+		
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/api/demands/filter" );
-		return new ResponseEntity< >( page.getContent().stream().map( demandMapper::demandToDemandDTO ).collect( Collectors.toCollection( LinkedList::new ) ), headers, HttpStatus.OK );
+		
+		return new ResponseEntity< >( orderedDemands.stream().map( demandMapper::demandToDemandDTO ).collect( Collectors.toCollection( LinkedList::new ) ), headers, HttpStatus.OK );
 	}
 }

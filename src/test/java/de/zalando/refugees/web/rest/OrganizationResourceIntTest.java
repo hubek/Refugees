@@ -53,6 +53,12 @@ public class OrganizationResourceIntTest {
     private static final String DEFAULT_ADDRESS = "AAAAA";
     private static final String UPDATED_ADDRESS = "BBBBB";
 
+    private static final Double DEFAULT_LANG = 1D;
+    private static final Double UPDATED_LANG = 2D;
+
+    private static final Double DEFAULT_LAT = 1D;
+    private static final Double UPDATED_LAT = 2D;
+
     @Inject
     private OrganizationRepository organizationRepository;
 
@@ -90,6 +96,8 @@ public class OrganizationResourceIntTest {
         organization.setPhone(DEFAULT_PHONE);
         organization.setEmail(DEFAULT_EMAIL);
         organization.setAddress(DEFAULT_ADDRESS);
+        organization.setLang(DEFAULT_LANG);
+        organization.setLat(DEFAULT_LAT);
     }
 
     @Test
@@ -113,6 +121,8 @@ public class OrganizationResourceIntTest {
         assertThat(testOrganization.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testOrganization.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testOrganization.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testOrganization.getLang()).isEqualTo(DEFAULT_LANG);
+        assertThat(testOrganization.getLat()).isEqualTo(DEFAULT_LAT);
     }
 
     @Test
@@ -129,7 +139,9 @@ public class OrganizationResourceIntTest {
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
                 .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
                 .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
+                .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
+                .andExpect(jsonPath("$.[*].lang").value(hasItem(DEFAULT_LANG.doubleValue())))
+                .andExpect(jsonPath("$.[*].lat").value(hasItem(DEFAULT_LAT.doubleValue())));
     }
 
     @Test
@@ -146,7 +158,9 @@ public class OrganizationResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
+            .andExpect(jsonPath("$.lang").value(DEFAULT_LANG.doubleValue()))
+            .andExpect(jsonPath("$.lat").value(DEFAULT_LAT.doubleValue()));
     }
 
     @Test
@@ -170,6 +184,8 @@ public class OrganizationResourceIntTest {
         organization.setPhone(UPDATED_PHONE);
         organization.setEmail(UPDATED_EMAIL);
         organization.setAddress(UPDATED_ADDRESS);
+        organization.setLang(UPDATED_LANG);
+        organization.setLat(UPDATED_LAT);
         OrganizationDTO organizationDTO = organizationMapper.organizationToOrganizationDTO(organization);
 
         restOrganizationMockMvc.perform(put("/api/organizations")
@@ -185,6 +201,8 @@ public class OrganizationResourceIntTest {
         assertThat(testOrganization.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testOrganization.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testOrganization.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testOrganization.getLang()).isEqualTo(UPDATED_LANG);
+        assertThat(testOrganization.getLat()).isEqualTo(UPDATED_LAT);
     }
 
     @Test

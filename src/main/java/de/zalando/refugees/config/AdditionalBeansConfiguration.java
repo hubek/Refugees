@@ -1,6 +1,7 @@
 package de.zalando.refugees.config;
 
 import de.zalando.refugees.domain.Demand;
+import de.zalando.refugees.service.GeoCodingService;
 import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.mapper.DemandMapper;
 import de.zalando.refugees.web.rest.mapper.implementation.AppUserMapperImpl;
@@ -30,5 +31,11 @@ public class AdditionalBeansConfiguration
 	public AppUserMapperImpl appUserMapperImpl()
 	{
 		return new AppUserMapperImpl();
+	}
+	
+	@Bean
+	public GeoCodingService geoCodingService()
+	{
+		return new GeoCodingService();
 	}
 }

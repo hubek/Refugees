@@ -20,6 +20,8 @@
             "phone": "Phone",
             "email": "Email",
             "address": "Address",
+            "lang": "Lang",
+            "lat": "Lat",
             "type": "Type"
         }
     }
