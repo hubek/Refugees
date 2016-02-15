@@ -1,0 +1,24 @@
+{
+    "refugeesApp": {
+        "appUser" : {
+            "home": {
+                "title": "AppUsers",
+                "createLabel": "Créer un nouveau AppUser",
+                "createOrEditLabel": "Créer ou éditer un AppUser",
+                "search": "Search for AppUser"
+            },
+            "created": "Un nouveau AppUser a été créé avec l'identifiant {{ param }}",
+            "updated": "Le AppUser avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le AppUser avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le AppUser {{ id }} ?"
+            },
+            "detail": {
+                "title": "AppUser"
+            },
+            "branch": "Branch",
+            "user": "User"
+        }
+    }
+}
+

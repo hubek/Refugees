@@ -1,0 +1,23 @@
+{
+    "refugeesApp": {
+        "donationCondition" : {
+            "home": {
+                "title": "DonationConditions",
+                "createLabel": "Créer un nouveau DonationCondition",
+                "createOrEditLabel": "Créer ou éditer un DonationCondition",
+                "search": "Search for DonationCondition"
+            },
+            "created": "Un nouveau DonationCondition a été créé avec l'identifiant {{ param }}",
+            "updated": "Le DonationCondition avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le DonationCondition avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le DonationCondition {{ id }} ?"
+            },
+            "detail": {
+                "title": "DonationCondition"
+            },
+            "value": "Value"
+        }
+    }
+}
+

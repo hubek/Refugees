@@ -14,7 +14,9 @@
                 "branch": "Branch",
                 "season": "Season",
                 "gender": "Gender",
-                "donation_condtition": "Donation_condtition",
+                "donationCondition": "DonationCondition",
+                "appUser": "AppUser",
+                "demand": "Demand",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -49,7 +51,8 @@
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "Your e-mail",
+            "branch": "Branch"
         },
         "messages": {
             "info": {

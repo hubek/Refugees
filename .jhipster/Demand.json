@@ -1,0 +1,57 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "branch",
+            "otherEntityName": "branch",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "category",
+            "otherEntityName": "category",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "season",
+            "otherEntityName": "season",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "value"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "gender",
+            "otherEntityName": "gender",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "value"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "donationCondition",
+            "otherEntityName": "donationCondition",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "value"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "size",
+            "otherEntityName": "size",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "value"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160202213920",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "pagination": "pager"
+}

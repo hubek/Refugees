@@ -12,6 +12,8 @@
     <include file="classpath:config/liquibase/changelog/20160129094017_added_entity_Branch.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160129100754_added_entity_Season.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160129100849_added_entity_Gender.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160129101042_added_entity_Donation_condtition.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160129114032_added_entity_DonationCondition.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160129114330_added_entity_AppUser.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160202213920_added_entity_Demand.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
