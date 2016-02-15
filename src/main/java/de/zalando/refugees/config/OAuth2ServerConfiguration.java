@@ -39,8 +39,8 @@ public class OAuth2ServerConfiguration {
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
-        	
-        	
+
+
             http
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
@@ -64,6 +64,7 @@ public class OAuth2ServerConfiguration {
                 .antMatchers("/api/branchs/**").permitAll()
                 .antMatchers("/api/logs/**").hasAnyAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/api/**").authenticated()
+                .antMatchers("/api/demands/**").permitAll()
                 .antMatchers("/metrics/**").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/health/**").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/trace/**").hasAuthority(AuthoritiesConstants.ADMIN)
