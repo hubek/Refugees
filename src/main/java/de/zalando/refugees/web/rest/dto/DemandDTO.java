@@ -5,166 +5,208 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-
 /**
  * A DTO for the Demand entity.
  */
-public class DemandDTO implements Serializable {
+public class DemandDTO implements Serializable
+{
 
-    private Long id;
+	private Long id;
 
-    private Integer quantity;
+	private Integer quantity;
 
+	private Long branchId;
+	private Long categoryId;
 
-    private Long branchId;
-    private Long categoryId;
+	private String categoryName;
 
-    private String categoryName;
+	private Long seasonId;
 
-    private Long seasonId;
+	private String seasonValue;
 
-    private String seasonValue;
+	private Long genderId;
 
-    private Long genderId;
+	private String genderValue;
 
-    private String genderValue;
+	private Long donationConditionId;
 
-    private Long donationConditionId;
+	private String donationConditionValue;
 
-    private String donationConditionValue;
+	private Long sizeId;
 
-    private Long sizeId;
+	private String sizeValue;
 
-    private String sizeValue;
+	private Double distance;
 
-    public Long getId() {
-        return id;
-    }
+	public Double getDistance()
+	{
+		return distance;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public Integer getQuantity() {
-        return quantity;
-    }
+	public void setDistance( Double distance )
+	{
+		this.distance = distance;
+	}
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	public Long getId()
+	{
+		return id;
+	}
 
-    public Long getBranchId() {
-        return branchId;
-    }
+	public void setId( Long id )
+	{
+		this.id = id;
+	}
 
-    public void setBranchId(Long branchId) {
-        this.branchId = branchId;
-    }
-    public Long getCategoryId() {
-        return categoryId;
-    }
+	public Integer getQuantity()
+	{
+		return quantity;
+	}
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
+	public void setQuantity( Integer quantity )
+	{
+		this.quantity = quantity;
+	}
 
-    public String getCategoryName() {
-        return categoryName;
-    }
+	public Long getBranchId()
+	{
+		return branchId;
+	}
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
+	public void setBranchId( Long branchId )
+	{
+		this.branchId = branchId;
+	}
 
-    public Long getSeasonId() {
-        return seasonId;
-    }
+	public Long getCategoryId()
+	{
+		return categoryId;
+	}
 
-    public void setSeasonId(Long seasonId) {
-        this.seasonId = seasonId;
-    }
+	public void setCategoryId( Long categoryId )
+	{
+		this.categoryId = categoryId;
+	}
 
-    public String getSeasonValue() {
-        return seasonValue;
-    }
+	public String getCategoryName()
+	{
+		return categoryName;
+	}
 
-    public void setSeasonValue(String seasonValue) {
-        this.seasonValue = seasonValue;
-    }
+	public void setCategoryName( String categoryName )
+	{
+		this.categoryName = categoryName;
+	}
 
-    public Long getGenderId() {
-        return genderId;
-    }
+	public Long getSeasonId()
+	{
+		return seasonId;
+	}
 
-    public void setGenderId(Long genderId) {
-        this.genderId = genderId;
-    }
+	public void setSeasonId( Long seasonId )
+	{
+		this.seasonId = seasonId;
+	}
 
-    public String getGenderValue() {
-        return genderValue;
-    }
+	public String getSeasonValue()
+	{
+		return seasonValue;
+	}
 
-    public void setGenderValue(String genderValue) {
-        this.genderValue = genderValue;
-    }
+	public void setSeasonValue( String seasonValue )
+	{
+		this.seasonValue = seasonValue;
+	}
 
-    public Long getDonationConditionId() {
-        return donationConditionId;
-    }
+	public Long getGenderId()
+	{
+		return genderId;
+	}
 
-    public void setDonationConditionId(Long donationConditionId) {
-        this.donationConditionId = donationConditionId;
-    }
+	public void setGenderId( Long genderId )
+	{
+		this.genderId = genderId;
+	}
 
-    public String getDonationConditionValue() {
-        return donationConditionValue;
-    }
+	public String getGenderValue()
+	{
+		return genderValue;
+	}
 
-    public void setDonationConditionValue(String donationConditionValue) {
-        this.donationConditionValue = donationConditionValue;
-    }
+	public void setGenderValue( String genderValue )
+	{
+		this.genderValue = genderValue;
+	}
 
-    public Long getSizeId() {
-        return sizeId;
-    }
+	public Long getDonationConditionId()
+	{
+		return donationConditionId;
+	}
 
-    public void setSizeId(Long sizeId) {
-        this.sizeId = sizeId;
-    }
+	public void setDonationConditionId( Long donationConditionId )
+	{
+		this.donationConditionId = donationConditionId;
+	}
 
-    public String getSizeValue() {
-        return sizeValue;
-    }
+	public String getDonationConditionValue()
+	{
+		return donationConditionValue;
+	}
 
-    public void setSizeValue(String sizeValue) {
-        this.sizeValue = sizeValue;
-    }
+	public void setDonationConditionValue( String donationConditionValue )
+	{
+		this.donationConditionValue = donationConditionValue;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public Long getSizeId()
+	{
+		return sizeId;
+	}
 
-        DemandDTO demandDTO = (DemandDTO) o;
+	public void setSizeId( Long sizeId )
+	{
+		this.sizeId = sizeId;
+	}
 
-        if ( ! Objects.equals(id, demandDTO.id)) return false;
+	public String getSizeValue()
+	{
+		return sizeValue;
+	}
 
-        return true;
-    }
+	public void setSizeValue( String sizeValue )
+	{
+		this.sizeValue = sizeValue;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	@Override
+	public boolean equals( Object o )
+	{
+		if ( this == o )
+		{
+			return true;
+		}
+		if ( o == null || getClass() != o.getClass() )
+		{
+			return false;
+		}
 
-    @Override
-    public String toString() {
-        return "DemandDTO{" +
-            "id=" + id +
-            ", quantity='" + quantity + "'" +
-            '}';
-    }
+		DemandDTO demandDTO = (DemandDTO) o;
+
+		if ( !Objects.equals( id, demandDTO.id ) )
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode( id );
+	}
+
+	@Override
+	public String toString()
+	{
+		return "DemandDTO{" + "id=" + id + ", quantity='" + quantity + "'" + '}';
+	}
 }

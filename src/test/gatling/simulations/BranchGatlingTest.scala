@@ -80,7 +80,7 @@ class BranchGatlingTest extends Simulation {
             .exec(http("Create new branch")
             .post("/api/branchs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "address":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "email":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "address":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "lng":null, "lat":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_branch_url")))
             .pause(10)

@@ -123,14 +123,23 @@ public class DemandResource
 						produces = MediaType.APPLICATION_JSON_VALUE )
 	@Timed
 	@Transactional( readOnly = true )
-	public ResponseEntity< List< DemandDTO > > getAllDemandsByFilter( Pageable pageable, DemandDTO demandDTO, LatLng referencePoint )
+	public ResponseEntity< List< DemandDTO > > getAllDemandsByFilter( Pageable pageable, DemandDTO demandDTO, Double lng, Double lat )
 			throws URISyntaxException
 	{
 		log.debug( "REST request to get a page of Demands" );
 		
 		Page< Demand > page = demandService.findAllByFilter( pageable, demandMapper.demandDTOToDemand( demandDTO ) );
 		
-		List< Demand > orderedDemands = demandService.sortByDistance( page.getContent().stream().collect( Collectors.toCollection( LinkedList::new ) ), referencePoint ); 
+		List< Demand > orderedDemands =  page.getContent().stream().collect( Collectors.toCollection( LinkedList::new ) );
+		
+		// sort if refrence point is provided
+		if( lat != null && lng != null)
+		{
+			LatLng referencePoint = new LatLng( lat, lng );
+			
+			demandService.sortByDistance( orderedDemands, referencePoint );
+		}
+		 
 		
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/api/demands/filter" );
 		

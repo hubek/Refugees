@@ -35,7 +35,7 @@
         },
         {
             "fieldId": 5,
-            "fieldName": "lang",
+            "fieldName": "lng",
             "fieldType": "Double",
             "fieldValidateRules": []
         },

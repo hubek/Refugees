@@ -51,6 +51,12 @@ public class BranchResourceIntTest {
     private static final String DEFAULT_EMAIL = "AAAAA";
     private static final String UPDATED_EMAIL = "BBBBB";
 
+    private static final Double DEFAULT_LNG = 1D;
+    private static final Double UPDATED_LNG = 2D;
+
+    private static final Double DEFAULT_LAT = 1D;
+    private static final Double UPDATED_LAT = 2D;
+
     @Inject
     private BranchRepository branchRepository;
 
@@ -87,6 +93,8 @@ public class BranchResourceIntTest {
         branch.setAddress(DEFAULT_ADDRESS);
         branch.setPhone(DEFAULT_PHONE);
         branch.setEmail(DEFAULT_EMAIL);
+        branch.setLng(DEFAULT_LNG);
+        branch.setLat(DEFAULT_LAT);
     }
 
     @Test
@@ -109,6 +117,8 @@ public class BranchResourceIntTest {
         assertThat(testBranch.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testBranch.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testBranch.getEmail()).isEqualTo(DEFAULT_EMAIL);
+        assertThat(testBranch.getLng()).isEqualTo(DEFAULT_LNG);
+        assertThat(testBranch.getLat()).isEqualTo(DEFAULT_LAT);
     }
 
     @Test
@@ -124,7 +134,9 @@ public class BranchResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(branch.getId().intValue())))
                 .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
                 .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
-                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())));
+                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
+                .andExpect(jsonPath("$.[*].lng").value(hasItem(DEFAULT_LNG.doubleValue())))
+                .andExpect(jsonPath("$.[*].lat").value(hasItem(DEFAULT_LAT.doubleValue())));
     }
 
     @Test
@@ -140,7 +152,9 @@ public class BranchResourceIntTest {
             .andExpect(jsonPath("$.id").value(branch.getId().intValue()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()));
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
+            .andExpect(jsonPath("$.lng").value(DEFAULT_LNG.doubleValue()))
+            .andExpect(jsonPath("$.lat").value(DEFAULT_LAT.doubleValue()));
     }
 
     @Test
@@ -163,6 +177,8 @@ public class BranchResourceIntTest {
         branch.setAddress(UPDATED_ADDRESS);
         branch.setPhone(UPDATED_PHONE);
         branch.setEmail(UPDATED_EMAIL);
+        branch.setLng(UPDATED_LNG);
+        branch.setLat(UPDATED_LAT);
         BranchDTO branchDTO = branchMapper.branchToBranchDTO(branch);
 
         restBranchMockMvc.perform(put("/api/branchs")
@@ -177,6 +193,8 @@ public class BranchResourceIntTest {
         assertThat(testBranch.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testBranch.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testBranch.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testBranch.getLng()).isEqualTo(UPDATED_LNG);
+        assertThat(testBranch.getLat()).isEqualTo(UPDATED_LAT);
     }
 
     @Test

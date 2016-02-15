@@ -19,6 +19,8 @@
             "address": "Address",
             "phone": "Phone",
             "email": "Email",
+            "lng": "Lng",
+            "lat": "Lat",
             "organization": "Organization"
         }
     }

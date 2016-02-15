@@ -22,6 +22,12 @@ public class BranchDTO implements Serializable {
     private String email;
 
 
+    private Double lng;
+
+
+    private Double lat;
+
+
     private Long organizationId;
     public Long getId() {
         return id;
@@ -50,6 +56,20 @@ public class BranchDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
     public Long getOrganizationId() {
@@ -87,6 +107,8 @@ public class BranchDTO implements Serializable {
             ", address='" + address + "'" +
             ", phone='" + phone + "'" +
             ", email='" + email + "'" +
+            ", lng='" + lng + "'" +
+            ", lat='" + lat + "'" +
             '}';
     }
 }

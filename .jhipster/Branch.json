@@ -24,6 +24,18 @@
             "fieldId": 3,
             "fieldName": "email",
             "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "lng",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "lat",
+            "fieldType": "Double",
+            "fieldValidateRules": []
         }
     ],
     "changelogDate": "20160129094017",

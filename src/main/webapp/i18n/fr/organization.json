@@ -20,7 +20,7 @@
             "phone": "Phone",
             "email": "Email",
             "address": "Address",
-            "lang": "Lang",
+            "lng": "Lng",
             "lat": "Lat",
             "type": "Type"
         }

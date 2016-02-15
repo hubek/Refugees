@@ -34,6 +34,9 @@ public class DemandService
 {
 	@Autowired
 	GeoCodingService geoCodingService;
+	
+	@Autowired
+	DemandComparator demandComparator;
 
 	private final Logger log = LoggerFactory.getLogger( DemandService.class );
 
@@ -95,9 +98,10 @@ public class DemandService
 
 	/**
 	 * Get All Demands By Filter
+	 * 
 	 * @param pageable
 	 * @param demand
-	 * @return 
+	 * @return
 	 */
 	public Page< Demand > findAllByFilter( Pageable pageable, Demand demand )
 	{
@@ -105,18 +109,34 @@ public class DemandService
 
 		return demandRepository.findAll( sp, pageable );
 	}
-	
+
 	/**
 	 * Sort the returned demands by the distance from the reference point
+	 * 
 	 * @param demands : List of demands
-	 * @param referencePoint : LatLng instance represent the coordinations of the reference point
-	 * @return Sorted list of demands by distance
+	 * @param referencePoint : LatLng instance represent the coordinations of
+	 *            the reference point
+	 * @return
 	 */
-	public List<Demand > sortByDistance( List< Demand > demands, LatLng referencePoint)
+	public List< Demand > sortByDistance( List< Demand > demands, LatLng referencePoint )
 	{
-		DemandComparator demandComparator = new DemandComparator( geoCodingService, referencePoint );
-		demands.sort( demandComparator );
+		calculateDistance( demands, referencePoint);
 		
+		demands.sort( demandComparator );
+
 		return demands;
+	}
+
+	/**
+	 * Calculate Demands Distance from reference point depending on demand branch
+	 * @param demands : List of demands
+	 * @param referencePoint : LatLng reference point coordinates
+	 */
+	private void calculateDistance( List< Demand > demands, LatLng referencePoint )
+	{
+		for ( Demand demand : demands )
+		{
+			demand.setDistance( geoCodingService.getDistance( demand.getBranch().getCoords(), referencePoint ) );
+		}
 	}
 }

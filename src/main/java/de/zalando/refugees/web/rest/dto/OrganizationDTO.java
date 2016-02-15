@@ -25,7 +25,7 @@ public class OrganizationDTO implements Serializable {
     private String address;
 
 
-    private Double lang;
+    private Double lng;
 
 
     private Double lat;
@@ -67,12 +67,12 @@ public class OrganizationDTO implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-    public Double getLang() {
-        return lang;
+    public Double getLng() {
+        return lng;
     }
 
-    public void setLang(Double lang) {
-        this.lang = lang;
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
     public Double getLat() {
         return lat;
@@ -118,7 +118,7 @@ public class OrganizationDTO implements Serializable {
             ", phone='" + phone + "'" +
             ", email='" + email + "'" +
             ", address='" + address + "'" +
-            ", lang='" + lang + "'" +
+            ", lng='" + lng + "'" +
             ", lat='" + lat + "'" +
             '}';
     }

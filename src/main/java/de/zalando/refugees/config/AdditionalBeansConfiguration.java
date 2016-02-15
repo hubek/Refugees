@@ -1,11 +1,13 @@
 package de.zalando.refugees.config;
 
 import de.zalando.refugees.domain.Demand;
+import de.zalando.refugees.domain.util.DemandComparator;
 import de.zalando.refugees.service.GeoCodingService;
 import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.mapper.DemandMapper;
 import de.zalando.refugees.web.rest.mapper.implementation.AppUserMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.BranchMapperImpl;
+import de.zalando.refugees.web.rest.mapper.implementation.DemandMapperImpl;
 import de.zalando.refugees.web.rest.mapper.implementation.OrganizationMapperImpl;
 
 import org.springframework.context.annotation.Bean;
@@ -37,5 +39,17 @@ public class AdditionalBeansConfiguration
 	public GeoCodingService geoCodingService()
 	{
 		return new GeoCodingService();
+	}
+	
+	@Bean
+	public DemandComparator demandComparator()
+	{
+		return new DemandComparator();
+	}
+	
+	@Bean
+	public DemandMapperImpl demandMapperImpl()
+	{
+		return new DemandMapperImpl();
 	}
 }

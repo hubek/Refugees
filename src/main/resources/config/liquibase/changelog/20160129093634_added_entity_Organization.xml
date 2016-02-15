@@ -29,7 +29,7 @@
             
             <column name="address" type="varchar(255)"/>
             
-            <column name="lang" type="double"/>
+            <column name="lng" type="double"/>
             
             <column name="lat" type="double"/>
             

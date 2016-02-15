@@ -2,6 +2,7 @@ package de.zalando.refugees.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.junit.Ignore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -47,8 +48,21 @@ public class Demand implements Serializable {
     @ManyToOne
     @JoinColumn(name = "size_id")
     private Size size;
+    
+    @Transient
+    private Double distance;
 
-    public Long getId() {
+    public Double getDistance()
+	{
+		return distance;
+	}
+
+	public void setDistance( Double distance )
+	{
+		this.distance = distance;
+	}
+
+	public Long getId() {
         return id;
     }
 

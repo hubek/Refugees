@@ -35,8 +35,8 @@ public class Organization implements Serializable {
     @Column(name = "address")
     private String address;
     
-    @Column(name = "lang")
-    private Double lang;
+    @Column(name = "lng")
+    private Double lng;
     
     @Column(name = "lat")
     private Double lat;
@@ -85,12 +85,12 @@ public class Organization implements Serializable {
         this.address = address;
     }
 
-    public Double getLang() {
-        return lang;
+    public Double getLng() {
+        return lng;
     }
     
-    public void setLang(Double lang) {
-        this.lang = lang;
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public Double getLat() {
@@ -109,14 +109,10 @@ public class Organization implements Serializable {
         this.type = organizationType;
     }
     
-    /**
-     * Get LatLng object representing the organization location
-     * @return LatLng object
-     */
     public LatLng getCoords()
     {
-    	return new LatLng( this.lat, this.lang);
-    };
+    	return new LatLng( this.lat, this.lng);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -146,7 +142,7 @@ public class Organization implements Serializable {
             ", phone='" + phone + "'" +
             ", email='" + email + "'" +
             ", address='" + address + "'" +
-            ", lang='" + lang + "'" +
+            ", lng='" + lng + "'" +
             ", lat='" + lat + "'" +
             '}';
     }

@@ -33,7 +33,7 @@ public class OrganizationMapperImpl implements OrganizationMapper
 		dto.setEmail( organization.getEmail() );
 		dto.setName( organization.getName() );
 		dto.setPhone( organization.getPhone() );
-		dto.setLang( organization.getLang() );
+		dto.setLng( organization.getLng() );
 		dto.setLat( organization.getLat() );
 
 		if ( organization.getType() != null )
@@ -66,13 +66,9 @@ public class OrganizationMapperImpl implements OrganizationMapper
 		organization.setPhone( organizationDTO.getPhone() );
 		organization.setType( type );
 
-		// get Lat Lang values
-		if ( organization.getLang() == null || organization.getLat() == null )
-		{
-			LatLng geoPoint = geoCodingService.getGeoPoint( organization.getAddress() );
-			organization.setLang( geoPoint.lng );
-			organization.setLat( geoPoint.lat );
-		}
+		LatLng geoPoint = geoCodingService.getGeoPoint( organization.getAddress() );
+		organization.setLng( geoPoint.lng );
+		organization.setLat( geoPoint.lat );
 
 		return organization;
 	}
