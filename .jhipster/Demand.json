@@ -41,6 +41,13 @@
             "otherEntityName": "size",
             "relationshipType": "many-to-one",
             "otherEntityField": "value"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "status",
+            "otherEntityName": "status",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "value"
         }
     ],
     "fields": [

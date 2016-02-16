@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('refugeesApp').controller('OfferDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Offer', 'Category', 'Season', 'Size', 'DonationCondition', 'Gender', 'Organization',
-        function($scope, $stateParams, $uibModalInstance, entity, Offer, Category, Season, Size, DonationCondition, Gender, Organization) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Offer', 'Category', 'Season', 'Size', 'DonationCondition', 'Gender', 'Organization', 'Status',
+        function($scope, $stateParams, $uibModalInstance, entity, Offer, Category, Season, Size, DonationCondition, Gender, Organization, Status) {
 
         $scope.offer = entity;
         $scope.categorys = Category.query();
@@ -11,6 +11,7 @@ angular.module('refugeesApp').controller('OfferDialogController',
         $scope.donationconditions = DonationCondition.query();
         $scope.genders = Gender.query();
         $scope.organizations = Organization.query();
+        $scope.statuss = Status.query();
         $scope.load = function(id) {
             Offer.get({id : id}, function(result) {
                 $scope.offer = result;

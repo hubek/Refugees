@@ -29,6 +29,7 @@
             <column name="gender_id" type="bigint"/>
             <column name="donation_condition_id" type="bigint"/>
             <column name="size_id" type="bigint"/>
+            <column name="status_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         
@@ -67,6 +68,12 @@
                                  constraintName="fk_demand_size_id"
                                  referencedColumnNames="id"
                                  referencedTableName="size"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="demand"
+                                 constraintName="fk_demand_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="status"/>
 
     </changeSet>
 </databaseChangeLog>

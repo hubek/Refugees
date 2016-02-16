@@ -22,6 +22,7 @@ public class OfferDTO implements Serializable {
     private Long donationConditionId;
     private Long genderId;
     private Long organizationId;
+    private Long statusId;
     public Long getId() {
         return id;
     }
@@ -78,6 +79,13 @@ public class OfferDTO implements Serializable {
 
     public void setOrganizationId(Long organizationId) {
         this.organizationId = organizationId;
+    }
+    public Long getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Long statusId) {
+        this.statusId = statusId;
     }
     @Override
     public boolean equals(Object o) {

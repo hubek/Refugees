@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('refugeesApp')
-    .controller('OfferDetailController', function ($scope, $rootScope, $stateParams, entity, Offer, Category, Season, Size, DonationCondition, Gender, Organization) {
+    .controller('OfferDetailController', function ($scope, $rootScope, $stateParams, entity, Offer, Category, Season, Size, DonationCondition, Gender, Organization, Status) {
         $scope.offer = entity;
         $scope.load = function (id) {
             Offer.get({id: id}, function(result) {

@@ -1,14 +1,10 @@
 package de.zalando.refugees.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.maps.model.LatLng;
-
-import de.zalando.refugees.domain.Demand;
 import de.zalando.refugees.domain.Offer;
 import de.zalando.refugees.service.OfferService;
 import de.zalando.refugees.web.rest.util.HeaderUtil;
 import de.zalando.refugees.web.rest.util.PaginationUtil;
-import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.dto.OfferDTO;
 import de.zalando.refugees.web.rest.mapper.OfferMapper;
 import org.slf4j.Logger;

@@ -2,22 +2,15 @@
 
 describe('Controller Tests', function() {
 
-    describe('Demand Detail Controller', function() {
+    describe('Status Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockDemand, MockBranch, MockCategory, MockSeason, MockGender, MockDonationCondition, MockSize, MockStatus;
+        var MockEntity, MockStatus;
         var createController;
 
         beforeEach(inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
-            MockDemand = jasmine.createSpy('MockDemand');
-            MockBranch = jasmine.createSpy('MockBranch');
-            MockCategory = jasmine.createSpy('MockCategory');
-            MockSeason = jasmine.createSpy('MockSeason');
-            MockGender = jasmine.createSpy('MockGender');
-            MockDonationCondition = jasmine.createSpy('MockDonationCondition');
-            MockSize = jasmine.createSpy('MockSize');
             MockStatus = jasmine.createSpy('MockStatus');
             
 
@@ -25,24 +18,17 @@ describe('Controller Tests', function() {
                 '$scope': $scope,
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
-                'Demand': MockDemand,
-                'Branch': MockBranch,
-                'Category': MockCategory,
-                'Season': MockSeason,
-                'Gender': MockGender,
-                'DonationCondition': MockDonationCondition,
-                'Size': MockSize,
                 'Status': MockStatus
             };
             createController = function() {
-                $injector.get('$controller')("DemandDetailController", locals);
+                $injector.get('$controller')("StatusDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'refugeesApp:demandUpdate';
+                var eventType = 'refugeesApp:statusUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

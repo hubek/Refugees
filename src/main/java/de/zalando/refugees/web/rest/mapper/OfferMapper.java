@@ -17,6 +17,7 @@ public interface OfferMapper {
     @Mapping(source = "donationCondition.id", target = "donationConditionId")
     @Mapping(source = "gender.id", target = "genderId")
     @Mapping(source = "organization.id", target = "organizationId")
+    @Mapping(source = "status.id", target = "statusId")
     OfferDTO offerToOfferDTO(Offer offer);
 
     @Mapping(source = "categoryId", target = "category")
@@ -25,6 +26,7 @@ public interface OfferMapper {
     @Mapping(source = "donationConditionId", target = "donationCondition")
     @Mapping(source = "genderId", target = "gender")
     @Mapping(source = "organizationId", target = "organization")
+    @Mapping(source = "statusId", target = "status")
     Offer offerDTOToOffer(OfferDTO offerDTO);
 
     default Category categoryFromId(Long id) {
@@ -79,5 +81,14 @@ public interface OfferMapper {
         Organization organization = new Organization();
         organization.setId(id);
         return organization;
+    }
+
+    default Status statusFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Status status = new Status();
+        status.setId(id);
+        return status;
     }
 }

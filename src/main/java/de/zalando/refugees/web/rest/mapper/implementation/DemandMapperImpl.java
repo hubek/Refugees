@@ -41,6 +41,7 @@ public class DemandMapperImpl implements DemandMapper
 		demandDTO.setGenderId( demandGenderId( demand ) );
 		demandDTO.setCategoryName( demandCategoryName( demand ) );
 		demandDTO.setCategoryId( demandCategoryId( demand ) );
+		demandDTO.setStatusId( demandStatusId( demand ) );
 		demandDTO.setId( demand.getId() );
 		demandDTO.setQuantity( demand.getQuantity() );
 		demandDTO.setDistance( demand.getDistance() );
@@ -64,6 +65,7 @@ public class DemandMapperImpl implements DemandMapper
 		demand.setSeason( seasonFromId( demandDTO.getSeasonId() ) );
 		demand.setCategory( categoryFromId( demandDTO.getCategoryId() ) );
 		demand.setBranch( branchFromId( demandDTO.getBranchId() ) );
+		demand.setStatus( statusFromId( demandDTO.getStatusId() ) );
 		demand.setId( demandDTO.getId() );
 		demand.setQuantity( demandDTO.getQuantity() );
 		demand.setDistance( demand.getDistance() );
@@ -84,6 +86,26 @@ public class DemandMapperImpl implements DemandMapper
 			return null;
 		}
 		Long id = branch.getId();
+		if ( id == null )
+		{
+			return null;
+		}
+		return id;
+	}
+
+	private Long demandStatusId( Demand demand )
+	{
+
+		if ( demand == null )
+		{
+			return null;
+		}
+		Status status = demand.getStatus();
+		if ( status == null )
+		{
+			return null;
+		}
+		Long id = status.getId();
 		if ( id == null )
 		{
 			return null;

@@ -64,6 +64,11 @@ public class DemandSpecification implements Specification< Demand >
 		{
 			predicates.add( cb.equal( root.get( "size" ), demand.getSize() ) );
 		}
+		
+		if ( demand.getStatus() != null )
+		{
+			predicates.add( cb.equal( root.get( "status" ), demand.getStatus() ) );
+		}
 
 		return cb.and( predicates.toArray( new Predicate[0] ) );
 	}

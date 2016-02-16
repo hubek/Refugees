@@ -38,6 +38,18 @@ public class DemandDTO implements Serializable
 
 	private Double distance;
 
+	private Long statusId;
+
+	public Long getStatusId()
+	{
+		return statusId;
+	}
+
+	public void setStatusId( Long statusId )
+	{
+		this.statusId = statusId;
+	}
+
 	public Double getDistance()
 	{
 		return distance;

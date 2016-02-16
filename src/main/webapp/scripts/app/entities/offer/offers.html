@@ -26,6 +26,7 @@
                     <th jh-sort-by="donationConditionId"><span translate="refugeesApp.offer.donationCondition">donationCondition</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="genderId"><span translate="refugeesApp.offer.gender">gender</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="organizationId"><span translate="refugeesApp.offer.organization">organization</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statusId"><span translate="refugeesApp.offer.status">status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,6 +51,9 @@
                     </td>
                     <td>
                         <a ui-sref="organization.detail({id:offer.organizationId})">{{offer.organizationId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="status.detail({id:offer.statusId})">{{offer.statusId}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

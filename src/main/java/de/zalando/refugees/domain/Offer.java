@@ -13,130 +13,164 @@ import java.util.Objects;
  * A Offer.
  */
 @Entity
-@Table(name = "offer")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Offer implements Serializable {
+@Table( name = "offer" )
+@Cache( usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE )
+public class Offer implements Serializable
+{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue( strategy = GenerationType.AUTO )
+	private Long id;
 
-    @Column(name = "quantity")
-    private Integer quantity;
-    
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+	@Column( name = "quantity" )
+	private Integer quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "season_id")
-    private Season season;
+	@ManyToOne
+	@JoinColumn( name = "category_id" )
+	private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "size_id")
-    private Size size;
+	@ManyToOne
+	@JoinColumn( name = "season_id" )
+	private Season season;
 
-    @ManyToOne
-    @JoinColumn(name = "donation_condition_id")
-    private DonationCondition donationCondition;
+	@ManyToOne
+	@JoinColumn( name = "size_id" )
+	private Size size;
 
-    @ManyToOne
-    @JoinColumn(name = "gender_id")
-    private Gender gender;
+	@ManyToOne
+	@JoinColumn( name = "donation_condition_id" )
+	private DonationCondition donationCondition;
 
-    @ManyToOne
-    @JoinColumn(name = "organization_id")
-    private Organization organization;
+	@ManyToOne
+	@JoinColumn( name = "gender_id" )
+	private Gender gender;
 
-    public Long getId() {
-        return id;
-    }
+	@ManyToOne
+	@JoinColumn( name = "organization_id" )
+	private Organization organization;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@ManyToOne
+	@JoinColumn( name = "status_id" )
+	private Status status;
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-    
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	public Long getId()
+	{
+		return id;
+	}
 
-    public Category getCategory() {
-        return category;
-    }
+	public void setId( Long id )
+	{
+		this.id = id;
+	}
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+	public Integer getQuantity()
+	{
+		return quantity;
+	}
 
-    public Season getSeason() {
-        return season;
-    }
+	public void setQuantity( Integer quantity )
+	{
+		this.quantity = quantity;
+	}
 
-    public void setSeason(Season season) {
-        this.season = season;
-    }
+	public Category getCategory()
+	{
+		return category;
+	}
 
-    public Size getSize() {
-        return size;
-    }
+	public void setCategory( Category category )
+	{
+		this.category = category;
+	}
 
-    public void setSize(Size size) {
-        this.size = size;
-    }
+	public Season getSeason()
+	{
+		return season;
+	}
 
-    public DonationCondition getDonationCondition() {
-        return donationCondition;
-    }
+	public void setSeason( Season season )
+	{
+		this.season = season;
+	}
 
-    public void setDonationCondition(DonationCondition donationCondition) {
-        this.donationCondition = donationCondition;
-    }
+	public Size getSize()
+	{
+		return size;
+	}
 
-    public Gender getGender() {
-        return gender;
-    }
+	public void setSize( Size size )
+	{
+		this.size = size;
+	}
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+	public DonationCondition getDonationCondition()
+	{
+		return donationCondition;
+	}
 
-    public Organization getOrganization() {
-        return organization;
-    }
+	public void setDonationCondition( DonationCondition donationCondition )
+	{
+		this.donationCondition = donationCondition;
+	}
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
+	public Gender getGender()
+	{
+		return gender;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Offer offer = (Offer) o;
-        if(offer.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, offer.id);
-    }
+	public void setGender( Gender gender )
+	{
+		this.gender = gender;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public Organization getOrganization()
+	{
+		return organization;
+	}
 
-    @Override
-    public String toString() {
-        return "Offer{" +
-            "id=" + id +
-            ", quantity='" + quantity + "'" +
-            '}';
-    }
+	public void setOrganization( Organization organization )
+	{
+		this.organization = organization;
+	}
+
+	public Status getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus( Status status )
+	{
+		this.status = status;
+	}
+
+	@Override
+	public boolean equals( Object o )
+	{
+		if ( this == o )
+		{
+			return true;
+		}
+		if ( o == null || getClass() != o.getClass() )
+		{
+			return false;
+		}
+		Offer offer = (Offer) o;
+		if ( offer.id == null || id == null )
+		{
+			return false;
+		}
+		return Objects.equals( id, offer.id );
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode( id );
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Offer{" + "id=" + id + ", quantity='" + quantity + "'" + '}';
+	}
 }

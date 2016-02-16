@@ -22,7 +22,8 @@
             "season": "Season",
             "gender": "Gender",
             "donationCondition": "DonationCondition",
-            "size": "Size"
+            "size": "Size",
+            "status": "Status"
         }
     }
 }

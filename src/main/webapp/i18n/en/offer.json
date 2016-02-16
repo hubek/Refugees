@@ -22,7 +22,8 @@
             "size": "Size",
             "donationCondition": "DonationCondition",
             "gender": "Gender",
-            "organization": "Organization"
+            "organization": "Organization",
+            "status": "Status"
         }
     }
 }
