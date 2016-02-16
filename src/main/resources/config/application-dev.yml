@@ -18,12 +18,18 @@ spring:
             enabled: true
         livereload:
             enabled: false # we use Grunt + BrowserSync for livereload
+#    datasource:
+#        driver-class-name: org.postgresql.ds.PGSimpleDataSource
+#        url: jdbc:postgresql://localhost:5432/postgres
+#        name:
+#        username: postgres
+#        password: test123
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost:5432/postgres
+        url: jdbc:postgres://ec2-54-228-246-206.eu-west-1.compute.amazonaws.com:5432/db8v563ac0oa9b
         name:
-        username: postgres
-        password: test123
+        username: vpoarotijedyrs
+        password: GEfKswT8vj3SlzaCllObQhd_u-
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         database: POSTGRESQL
