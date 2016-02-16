@@ -5,15 +5,17 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
- * A Demand.
+ * A Offer.
  */
 @Entity
-@Table(name = "demand")
+@Table(name = "offer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Demand implements Serializable {
+public class Offer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +25,6 @@ public class Demand implements Serializable {
     private Integer quantity;
     
     @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branch branch;
-
-    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -35,31 +33,22 @@ public class Demand implements Serializable {
     private Season season;
 
     @ManyToOne
-    @JoinColumn(name = "gender_id")
-    private Gender gender;
+    @JoinColumn(name = "size_id")
+    private Size size;
 
     @ManyToOne
     @JoinColumn(name = "donation_condition_id")
     private DonationCondition donationCondition;
 
     @ManyToOne
-    @JoinColumn(name = "size_id")
-    private Size size;
-    
-    @Transient
-    private Double distance;
+    @JoinColumn(name = "gender_id")
+    private Gender gender;
 
-    public Double getDistance()
-	{
-		return distance;
-	}
+    @ManyToOne
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 
-	public void setDistance( Double distance )
-	{
-		this.distance = distance;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -73,14 +62,6 @@ public class Demand implements Serializable {
     
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
     }
 
     public Category getCategory() {
@@ -99,12 +80,12 @@ public class Demand implements Serializable {
         this.season = season;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Size getSize() {
+        return size;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setSize(Size size) {
+        this.size = size;
     }
 
     public DonationCondition getDonationCondition() {
@@ -115,12 +96,20 @@ public class Demand implements Serializable {
         this.donationCondition = donationCondition;
     }
 
-    public Size getSize() {
-        return size;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setSize(Size size) {
-        this.size = size;
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     @Override
@@ -131,11 +120,11 @@ public class Demand implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Demand demand = (Demand) o;
-        if(demand.id == null || id == null) {
+        Offer offer = (Offer) o;
+        if(offer.id == null || id == null) {
             return false;
         }
-        return Objects.equals(id, demand.id);
+        return Objects.equals(id, offer.id);
     }
 
     @Override
@@ -145,7 +134,7 @@ public class Demand implements Serializable {
 
     @Override
     public String toString() {
-        return "Demand{" +
+        return "Offer{" +
             "id=" + id +
             ", quantity='" + quantity + "'" +
             '}';

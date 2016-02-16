@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myOfferLabel" translate="refugeesApp.offer.home.createOrEditLabel">Create or edit a Offer</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="offer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="refugeesApp.offer.quantity" for="field_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="field_quantity"
+                    ng-model="offer.quantity"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="refugeesApp.offer.category" for="field_category">category</label>
+            <select class="form-control" id="field_category" name="category" ng-model="offer.categoryId" ng-options="category.id as category.id for category in categorys">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="refugeesApp.offer.season" for="field_season">season</label>
+            <select class="form-control" id="field_season" name="season" ng-model="offer.seasonId" ng-options="season.id as season.id for season in seasons">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="refugeesApp.offer.size" for="field_size">size</label>
+            <select class="form-control" id="field_size" name="size" ng-model="offer.sizeId" ng-options="size.id as size.id for size in sizes">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="refugeesApp.offer.donationCondition" for="field_donationCondition">donationCondition</label>
+            <select class="form-control" id="field_donationCondition" name="donationCondition" ng-model="offer.donationConditionId" ng-options="donationCondition.id as donationCondition.id for donationCondition in donationconditions">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="refugeesApp.offer.gender" for="field_gender">gender</label>
+            <select class="form-control" id="field_gender" name="gender" ng-model="offer.genderId" ng-options="gender.id as gender.id for gender in genders">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="refugeesApp.offer.organization" for="field_organization">organization</label>
+            <select class="form-control" id="field_organization" name="organization" ng-model="offer.organizationId" ng-options="organization.id as organization.id for organization in organizations">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
