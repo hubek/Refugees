@@ -108,4 +108,17 @@ public class AppUserResource
 		appUserService.delete( id );
 		return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( "appUser", id.toString() ) ).build();
 	}
+
+	/**
+	 * PUT /appUsers/activate -> Update an existing appUser.
+	 */
+	@RequestMapping(	value = "/appUsers/activate", method = RequestMethod.PUT,
+						produces = MediaType.APPLICATION_JSON_VALUE )
+	@Timed
+	public ResponseEntity activateAppUser( Long userId ) throws URISyntaxException
+	{
+		appUserService.activateUser( userId );
+
+		return ResponseEntity.noContent().build();
+	}
 }
