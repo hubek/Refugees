@@ -84,3 +84,7 @@ To run on heroku we have to:
 2.  Create file Procfile with content:
 
     web: java -Dserver.port=$PORT -jar target/*.war
+    
+   
+# PostgreSQL in Docker on local env
+sudo docker run --name localpostgres -p 5432:5432 -e POSTGRES_PASSWORD=test123 -d postgres

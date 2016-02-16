@@ -19,23 +19,33 @@ spring:
         livereload:
             enabled: false # we use Grunt + BrowserSync for livereload
     datasource:
-        driver-class-name: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:mem:refugees;DB_CLOSE_DELAY=-1
+        driver-class-name: org.postgresql.ds.PGSimpleDataSource
+        url: jdbc:postgresql://localhost:5432/postgres
         name:
-        username: refugees
-        password:
-    h2:
-        console:
-            enabled: false
+        username: postgres
+        password: test123
     jpa:
-        database-platform: de.zalando.refugees.domain.util.FixedH2Dialect
-        database: H2
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database: POSTGRESQL
         show_sql: true
         properties:
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+#    datasource:
+#        driver-class-name: org.h2.jdbcx.JdbcDataSource
+#        url: jdbc:h2:mem:refugees;DB_CLOSE_DELAY=-1
+#        name:
+#        username: refugees
+#        password:
+#    h2:
+#        console:
+#            enabled: false
+#    jpa:
+#        database-platform: de.zalando.refugees.domain.util.FixedH2Dialect
+#        database: H2
+
     mail:
         host: localhost
     messages:

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import liquibase.integration.spring.SpringLiquibase;
-import org.h2.tools.Server;
+//import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,14 +79,14 @@ public class DatabaseConfiguration {
         return new HikariDataSource(config);
     }
 
-    /**
-     * Open the TCP port for the H2 database, so it is available remotely.
-     */
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    @Profile(Constants.SPRING_PROFILE_DEVELOPMENT)
-    public Server h2TCPServer() throws SQLException {
-        return Server.createTcpServer("-tcp","-tcpAllowOthers");
-    }
+//    /**
+//     * Open the TCP port for the H2 database, so it is available remotely.
+//     */
+//    @Bean(initMethod = "start", destroyMethod = "stop")
+//    @Profile(Constants.SPRING_PROFILE_DEVELOPMENT)
+//    public Server h2TCPServer() throws SQLException {
+//        return Server.createTcpServer("-tcp","-tcpAllowOthers");
+//    }
 
     @Bean
     public SpringLiquibase liquibase(DataSource dataSource, DataSourceProperties dataSourceProperties,
