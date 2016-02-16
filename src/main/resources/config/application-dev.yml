@@ -26,7 +26,7 @@ spring:
 #        password: test123
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgres://ec2-54-228-246-206.eu-west-1.compute.amazonaws.com:5432/db8v563ac0oa9b
+        url: jdbc:postgresql://ec2-54-228-246-206.eu-west-1.compute.amazonaws.com:5432/db8v563ac0oa9b
         name:
         username: vpoarotijedyrs
         password: GEfKswT8vj3SlzaCllObQhd_u-
