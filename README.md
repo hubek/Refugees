@@ -88,3 +88,13 @@ To run on heroku we have to:
    
 # PostgreSQL in Docker on local env
 sudo docker run --name localpostgres -p 5432:5432 -e POSTGRES_PASSWORD=test123 -d postgres
+
+# Heroku deployment
+mvn -Pprod clean heroku:deploy -DskipTests
+
+ in future, change in pom.xml line
+ <web>java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.war --spring.profiles.active=dev</web>
+ to
+ <web>java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.war --spring.profiles.active=prod</web>
+
+ I do not know, but with profile prod there is no angular frontend (maybe problems with grunt on my local machine?)

@@ -230,10 +230,10 @@
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -694,27 +694,27 @@
             <id>prod</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>com.github.trecloux</groupId>
-                        <artifactId>yeoman-maven-plugin</artifactId>
-                        <version>0.4</version>
-                        <executions>
-                            <execution>
-                                <id>run-frontend-build</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                                <configuration>
-                                    <buildTool>grunt</buildTool>
-                                    <buildArgs>build --no-color</buildArgs>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <yeomanProjectDirectory>${project.basedir}</yeomanProjectDirectory>
-                        </configuration>
-                    </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>com.github.trecloux</groupId>-->
+                        <!--<artifactId>yeoman-maven-plugin</artifactId>-->
+                        <!--<version>0.4</version>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>run-frontend-build</id>-->
+                                <!--<phase>generate-resources</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>build</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<buildTool>grunt</buildTool>-->
+                                    <!--<buildArgs>build &#45;&#45;no-color &#45;&#45;force</buildArgs>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                        <!--<configuration>-->
+                            <!--<yeomanProjectDirectory>${project.basedir}</yeomanProjectDirectory>-->
+                        <!--</configuration>-->
+                    <!--</plugin>-->
                     <plugin>
                         <artifactId>maven-clean-plugin</artifactId>
                         <version>2.5</version>
@@ -740,6 +740,17 @@
                             <arguments>
                                 <argument>--spring.profiles.active=prod</argument>
                             </arguments>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.heroku.sdk</groupId>
+                        <artifactId>heroku-maven-plugin</artifactId>
+                        <version>0.5.7</version>
+                        <configuration>
+                            <appName>refugees-app</appName>
+                            <processTypes>
+                                <web>java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.war --spring.profiles.active=dev</web>
+                            </processTypes>
                         </configuration>
                     </plugin>
                 </plugins>
