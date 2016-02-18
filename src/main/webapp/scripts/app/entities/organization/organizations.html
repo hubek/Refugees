@@ -23,6 +23,8 @@
                     <th><span translate="refugeesApp.organization.phone">Phone</span></th>
                     <th><span translate="refugeesApp.organization.email">Email</span></th>
                     <th><span translate="refugeesApp.organization.address">Address</span></th>
+                    <th><span translate="refugeesApp.organization.lng">Lng</span></th>
+                    <th><span translate="refugeesApp.organization.lat">Lat</span></th>
                     <th><span translate="refugeesApp.organization.type">type</span></th>
                     <th></th>
                 </tr>
@@ -34,6 +36,8 @@
                     <td>{{organization.phone}}</td>
                     <td>{{organization.email}}</td>
                     <td>{{organization.address}}</td>
+                    <td>{{organization.lng}}</td>
+                    <td>{{organization.lat}}</td>
                     <td>
                         <a ui-sref="organizationType.detail({id:organization.typeId})">{{organization.typeId}}</a>
                     </td>

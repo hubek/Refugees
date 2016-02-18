@@ -2,14 +2,21 @@ package de.zalando.refugees.service;
 
 import de.zalando.refugees.domain.Demand;
 import de.zalando.refugees.domain.DemandSpecification;
+import de.zalando.refugees.domain.util.DemandComparator;
 import de.zalando.refugees.repository.DemandRepository;
 import de.zalando.refugees.web.rest.dto.DemandDTO;
 import de.zalando.refugees.web.rest.mapper.DemandMapper;
+
+import org.aspectj.weaver.patterns.ReferencePointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.maps.model.LatLng;
+
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -25,6 +32,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class DemandService
 {
+	@Autowired
+	GeoCodingService geoCodingService;
+	
+	@Autowired
+	DemandComparator demandComparator;
 
 	private final Logger log = LoggerFactory.getLogger( DemandService.class );
 
@@ -86,14 +98,45 @@ public class DemandService
 
 	/**
 	 * Get All Demands By Filter
+	 * 
 	 * @param pageable
 	 * @param demand
-	 * @return 
+	 * @return
 	 */
 	public Page< Demand > findAllByFilter( Pageable pageable, Demand demand )
 	{
 		DemandSpecification sp = new DemandSpecification( demand );
 
 		return demandRepository.findAll( sp, pageable );
+	}
+
+	/**
+	 * Sort the returned demands by the distance from the reference point
+	 * 
+	 * @param demands : List of demands
+	 * @param referencePoint : LatLng instance represent the coordinations of
+	 *            the reference point
+	 * @return
+	 */
+	public List< Demand > sortByDistance( List< Demand > demands, LatLng referencePoint )
+	{
+		calculateDistance( demands, referencePoint);
+		
+		demands.sort( demandComparator );
+
+		return demands;
+	}
+
+	/**
+	 * Calculate Demands Distance from reference point depending on demand branch
+	 * @param demands : List of demands
+	 * @param referencePoint : LatLng reference point coordinates
+	 */
+	private void calculateDistance( List< Demand > demands, LatLng referencePoint )
+	{
+		for ( Demand demand : demands )
+		{
+			demand.setDistance( geoCodingService.getDistance( demand.getBranch().getCoords(), referencePoint ) );
+		}
 	}
 }

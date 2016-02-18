@@ -22,6 +22,8 @@
                     <th><span translate="refugeesApp.branch.address">Address</span></th>
                     <th><span translate="refugeesApp.branch.phone">Phone</span></th>
                     <th><span translate="refugeesApp.branch.email">Email</span></th>
+                    <th><span translate="refugeesApp.branch.lng">Lng</span></th>
+                    <th><span translate="refugeesApp.branch.lat">Lat</span></th>
                     <th><span translate="refugeesApp.branch.organization">organization</span></th>
                     <th></th>
                 </tr>
@@ -32,6 +34,8 @@
                     <td>{{branch.address}}</td>
                     <td>{{branch.phone}}</td>
                     <td>{{branch.email}}</td>
+                    <td>{{branch.lng}}</td>
+                    <td>{{branch.lat}}</td>
                     <td>
                         <a ui-sref="organization.detail({id:branch.organizationId})">{{branch.organizationId}}</a>
                     </td>

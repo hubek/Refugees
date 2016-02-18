@@ -11,6 +11,6 @@ import java.util.List;
 /**
  * Spring Data JPA repository for the Demand entity.
  */
-public interface DemandRepository extends JpaRepository<Demand,Long>, JpaSpecificationExecutor {
-	Page<Demand> findByQuantity(Integer quantity, Pageable pageable);
+public interface DemandRepository extends JpaRepository< Demand, Long >, JpaSpecificationExecutor
+{
 }

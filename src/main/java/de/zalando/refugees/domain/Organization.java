@@ -3,6 +3,8 @@ package de.zalando.refugees.domain;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.google.maps.model.LatLng;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -32,6 +34,12 @@ public class Organization implements Serializable {
     
     @Column(name = "address")
     private String address;
+    
+    @Column(name = "lng")
+    private Double lng;
+    
+    @Column(name = "lat")
+    private Double lat;
     
     @ManyToOne
     @JoinColumn(name = "type_id")
@@ -77,12 +85,33 @@ public class Organization implements Serializable {
         this.address = address;
     }
 
+    public Double getLng() {
+        return lng;
+    }
+    
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+    
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
     public OrganizationType getType() {
         return type;
     }
 
     public void setType(OrganizationType organizationType) {
         this.type = organizationType;
+    }
+    
+    public LatLng getCoords()
+    {
+    	return new LatLng( this.lat, this.lng);
     }
 
     @Override
@@ -113,6 +142,8 @@ public class Organization implements Serializable {
             ", phone='" + phone + "'" +
             ", email='" + email + "'" +
             ", address='" + address + "'" +
+            ", lng='" + lng + "'" +
+            ", lat='" + lat + "'" +
             '}';
     }
 }

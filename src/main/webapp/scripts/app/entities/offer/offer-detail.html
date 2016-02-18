@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="refugeesApp.offer.detail.title">Offer</span> {{offer.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.quantity">Quantity</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{offer.quantity}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.category">category</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="category.detail({id:offer.categoryId})">{{offer.categoryId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.season">season</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="season.detail({id:offer.seasonId})">{{offer.seasonId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.size">size</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="size.detail({id:offer.sizeId})">{{offer.sizeId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.donationCondition">donationCondition</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="donationCondition.detail({id:offer.donationConditionId})">{{offer.donationConditionId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.gender">gender</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="gender.detail({id:offer.genderId})">{{offer.genderId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.organization">organization</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="organization.detail({id:offer.organizationId})">{{offer.organizationId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="refugeesApp.offer.status">status</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="status.detail({id:offer.statusId})">{{offer.statusId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

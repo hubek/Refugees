@@ -60,7 +60,7 @@ spring:
         cache: false
 
 liquibase:
-    contexts: prod
+    contexts: dev
 
 server:
     port: 8080

@@ -64,6 +64,7 @@ public class OAuth2ServerConfiguration {
                 .antMatchers("/api/branchs/**").permitAll()
                 .antMatchers("/api/demands/**").permitAll()
                 .antMatchers("/api/organizations/**").permitAll()
+                .antMatchers("/api/appUsers/**").permitAll()
                 .antMatchers("/api/logs/**").hasAnyAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/metrics/**").hasAuthority(AuthoritiesConstants.ADMIN)

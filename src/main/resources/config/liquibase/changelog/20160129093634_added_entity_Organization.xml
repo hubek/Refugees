@@ -29,6 +29,10 @@
             
             <column name="address" type="varchar(255)"/>
             
+            <column name="lng" type="double"/>
+            
+            <column name="lat" type="double"/>
+            
             <column name="type_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>

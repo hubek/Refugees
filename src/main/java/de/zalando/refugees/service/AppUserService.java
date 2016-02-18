@@ -59,6 +59,8 @@ public class AppUserService
 		appUserDTO.setUserId( createUser( appUserDTO ) );
 		
 		AppUser appUser = appUserMapper.appUserDTOToAppUser( appUserDTO );
+		//appUser.getUser().setActivated( false );
+		
 		appUser = appUserRepository.save( appUser );
 		AppUserDTO result = appUserMapper.appUserToAppUserDTO( appUser );
 		return result;
@@ -98,5 +100,17 @@ public class AppUserService
 	{
 		log.debug( "Request to delete AppUser : {}", id );
 		appUserRepository.delete( id );
+	}
+	
+	/**
+	 * Activate user account
+	 * @param id : user id to activate
+	 */
+	public void activateUser( Long id)
+	{
+		AppUser user = appUserRepository.findOne( id );
+		user.getUser().setActivated( true );
+		
+		appUserRepository.save( user );
 	}
 }
