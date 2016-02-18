@@ -35,11 +35,11 @@ public class OrganizationMapperImpl implements OrganizationMapper
 		dto.setPhone( organization.getPhone() );
 		dto.setLng( organization.getLng() );
 		dto.setLat( organization.getLat() );
-
+		
 		if ( organization.getType() != null )
 		{
 			dto.setTypeId( organization.getType().getId() );
-
+			dto.setTypeValue( organization.getType().getName() );
 		}
 
 		return dto;

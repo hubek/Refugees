@@ -42,6 +42,7 @@ public class DemandMapperImpl implements DemandMapper
 		demandDTO.setCategoryName( demandCategoryName( demand ) );
 		demandDTO.setCategoryId( demandCategoryId( demand ) );
 		demandDTO.setStatusId( demandStatusId( demand ) );
+		demandDTO.setStatusValue( demandStatus( demand ) );
 		demandDTO.setId( demand.getId() );
 		demandDTO.setQuantity( demand.getQuantity() );
 		demandDTO.setDistance( demand.getDistance() );
@@ -111,6 +112,26 @@ public class DemandMapperImpl implements DemandMapper
 			return null;
 		}
 		return id;
+	}
+	
+	private String demandStatus( Demand demand )
+	{
+
+		if ( demand == null )
+		{
+			return null;
+		}
+		Status status = demand.getStatus();
+		if ( status == null )
+		{
+			return null;
+		}
+		String value = status.getValue();
+		if ( value == null )
+		{
+			return null;
+		}
+		return value;
 	}
 
 	private Long demandSizeId( Demand demand )

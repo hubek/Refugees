@@ -16,6 +16,7 @@ public class DemandDTO implements Serializable
 	private Integer quantity;
 
 	private Long branchId;
+	
 	private Long categoryId;
 
 	private String categoryName;
@@ -39,6 +40,18 @@ public class DemandDTO implements Serializable
 	private Double distance;
 
 	private Long statusId;
+	
+	private String statusValue;
+
+	public String getStatusValue()
+	{
+		return statusValue;
+	}
+
+	public void setStatusValue( String statusValue )
+	{
+		this.statusValue = statusValue;
+	}
 
 	public Long getStatusId()
 	{

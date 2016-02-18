@@ -39,6 +39,7 @@ public class BranchMapperImpl implements BranchMapper
 		if ( branch.getOrganization() != null )
 		{
 			dto.setOrganizationId( branch.getOrganization().getId() );
+			dto.setOrganizationName( branch.getOrganization().getName() );
 		}
 
 		return dto;
