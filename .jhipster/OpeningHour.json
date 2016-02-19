@@ -1,0 +1,32 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "branch",
+            "otherEntityName": "branch",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "day",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "open",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "close",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160219154109",
+    "dto": "no",
+    "service": "no",
+    "pagination": "no"
+}

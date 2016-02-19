@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myOpeningHourLabel" translate="refugeesApp.openingHour.home.createOrEditLabel">Create or edit a OpeningHour</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="openingHour.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="refugeesApp.openingHour.day" for="field_day">Day</label>
+            <input type="text" class="form-control" name="day" id="field_day"
+                    ng-model="openingHour.day"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="refugeesApp.openingHour.open" for="field_open">Open</label>
+            <input type="number" class="form-control" name="open" id="field_open"
+                    ng-model="openingHour.open"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="refugeesApp.openingHour.close" for="field_close">Close</label>
+            <input type="number" class="form-control" name="close" id="field_close"
+                    ng-model="openingHour.close"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="refugeesApp.openingHour.branch" for="field_branch">branch</label>
+            <select class="form-control" id="field_branch" name="branch" ng-model="openingHour.branch" ng-options="branch as branch.id for branch in branchs track by branch.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

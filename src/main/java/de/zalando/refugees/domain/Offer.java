@@ -65,6 +65,11 @@ public class Offer implements Serializable
 
 	public Integer getQuantity()
 	{
+		if( quantity == null )
+		{
+			quantity = 0;
+		}
+		
 		return quantity;
 	}
 

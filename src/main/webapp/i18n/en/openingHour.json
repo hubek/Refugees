@@ -1,0 +1,25 @@
+{
+    "refugeesApp": {
+        "openingHour" : {
+            "home": {
+                "title": "OpeningHours",
+                "createLabel": "Create a new OpeningHour",
+                "createOrEditLabel": "Create or edit a OpeningHour",
+                "search": "Search for OpeningHour"
+            },
+            "created": "A new OpeningHour is created with identifier {{ param }}",
+            "updated": "A OpeningHour is updated with identifier {{ param }}",
+            "deleted": "A OpeningHour is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete OpeningHour {{ id }}?"
+            },
+            "detail": {
+                "title": "OpeningHour"
+            },
+            "day": "Day",
+            "open": "Open",
+            "close": "Close",
+            "branch": "Branch"
+        }
+    }
+}

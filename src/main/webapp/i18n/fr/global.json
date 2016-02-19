@@ -19,6 +19,7 @@
                 "demand": "Demand",
                 "offer": "Offer",
                 "status": "Status",
+                "openingHour": "OpeningHour",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

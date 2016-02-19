@@ -81,6 +81,11 @@ public class Demand implements Serializable
 
 	public void setQuantity( Integer quantity )
 	{
+		if( quantity == null )
+		{
+			quantity = 0;
+		}
+		
 		this.quantity = quantity;
 	}
 

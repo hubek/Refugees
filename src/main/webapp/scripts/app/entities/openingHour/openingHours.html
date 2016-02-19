@@ -1,0 +1,64 @@
+<div>
+    <h2 translate="refugeesApp.openingHour.home.title">OpeningHours</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="openingHour.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                        translate="refugeesApp.openingHour.home.createLabel">Create new OpeningHour
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="refugeesApp.openingHour.day">Day</span></th>
+                    <th><span translate="refugeesApp.openingHour.open">Open</span></th>
+                    <th><span translate="refugeesApp.openingHour.close">Close</span></th>
+                    <th><span translate="refugeesApp.openingHour.branch">branch</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="openingHour in openingHours track by openingHour.id">
+                    <td><a ui-sref="openingHour.detail({id:openingHour.id})">{{openingHour.id}}</a></td>
+                    <td>{{openingHour.day}}</td>
+                    <td>{{openingHour.open}}</td>
+                    <td>{{openingHour.close}}</td>
+                    <td>
+                        <a ui-sref="branch.detail({id:openingHour.branch.id})">{{openingHour.branch.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="openingHour.detail({id:openingHour.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="openingHour.edit({id:openingHour.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="openingHour.delete({id:openingHour.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
