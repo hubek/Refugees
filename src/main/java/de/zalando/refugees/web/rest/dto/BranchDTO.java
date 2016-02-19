@@ -5,110 +5,138 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-
 /**
  * A DTO for the Branch entity.
  */
-public class BranchDTO implements Serializable {
+public class BranchDTO implements Serializable
+{
 
-    private Long id;
+	private Long id;
 
-    private String address;
+	private String address;
 
+	private String phone;
 
-    private String phone;
+	private String email;
 
+	private Double lng;
 
-    private String email;
+	private Double lat;
 
+	private Long organizationId;
+	
+	private String organizationName;
 
-    private Double lng;
+	public String getOrganizationName()
+	{
+		return organizationName;
+	}
 
+	public void setOrganizationName( String organizationName )
+	{
+		this.organizationName = organizationName;
+	}
 
-    private Double lat;
+	public Long getId()
+	{
+		return id;
+	}
 
+	public void setId( Long id )
+	{
+		this.id = id;
+	}
 
-    private Long organizationId;
-    public Long getId() {
-        return id;
-    }
+	public String getAddress()
+	{
+		return address;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getAddress() {
-        return address;
-    }
+	public void setAddress( String address )
+	{
+		this.address = address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getPhone() {
-        return phone;
-    }
+	public String getPhone()
+	{
+		return phone;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getEmail() {
-        return email;
-    }
+	public void setPhone( String phone )
+	{
+		this.phone = phone;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public Double getLng() {
-        return lng;
-    }
+	public String getEmail()
+	{
+		return email;
+	}
 
-    public void setLng(Double lng) {
-        this.lng = lng;
-    }
-    public Double getLat() {
-        return lat;
-    }
+	public void setEmail( String email )
+	{
+		this.email = email;
+	}
 
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
+	public Double getLng()
+	{
+		return lng;
+	}
 
-    public Long getOrganizationId() {
-        return organizationId;
-    }
+	public void setLng( Double lng )
+	{
+		this.lng = lng;
+	}
 
-    public void setOrganizationId(Long organizationId) {
-        this.organizationId = organizationId;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public Double getLat()
+	{
+		return lat;
+	}
 
-        BranchDTO branchDTO = (BranchDTO) o;
+	public void setLat( Double lat )
+	{
+		this.lat = lat;
+	}
 
-        if ( ! Objects.equals(id, branchDTO.id)) return false;
+	public Long getOrganizationId()
+	{
+		return organizationId;
+	}
 
-        return true;
-    }
+	public void setOrganizationId( Long organizationId )
+	{
+		this.organizationId = organizationId;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	@Override
+	public boolean equals( Object o )
+	{
+		if ( this == o )
+		{
+			return true;
+		}
+		if ( o == null || getClass() != o.getClass() )
+		{
+			return false;
+		}
 
-    @Override
-    public String toString() {
-        return "BranchDTO{" +
-            "id=" + id +
-            ", address='" + address + "'" +
-            ", phone='" + phone + "'" +
-            ", email='" + email + "'" +
-            ", lng='" + lng + "'" +
-            ", lat='" + lat + "'" +
-            '}';
-    }
+		BranchDTO branchDTO = (BranchDTO) o;
+
+		if ( !Objects.equals( id, branchDTO.id ) )
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode( id );
+	}
+
+	@Override
+	public String toString()
+	{
+		return "BranchDTO{" + "id=" + id + ", address='" + address + "'" + ", phone='" + phone + "'" + ", email='"
+				+ email + "'" + ", lng='" + lng + "'" + ", lat='" + lat + "'" + '}';
+	}
 }

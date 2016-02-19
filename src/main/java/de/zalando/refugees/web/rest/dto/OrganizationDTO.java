@@ -32,7 +32,20 @@ public class OrganizationDTO implements Serializable {
 
 
     private Long typeId;
-    public Long getId() {
+    
+    private String typeValue;
+    
+    public String getTypeValue()
+	{
+		return typeValue;
+	}
+
+	public void setTypeValue( String typeValue )
+	{
+		this.typeValue = typeValue;
+	}
+
+	public Long getId() {
         return id;
     }
 
