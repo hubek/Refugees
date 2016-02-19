@@ -48,6 +48,7 @@ public class OfferMapperImpl implements OfferMapper
 		offerDTO.setCategoryName( offerCategoryName( offer ) );
 		offerDTO.setStatusValue( offerStatusValue( offer ) );
 
+		offerDTO.setExpiration( offer.getExpiration() );
 		offerDTO.setQuantity( offer.getQuantity() );
 
 		return offerDTO;
@@ -72,6 +73,7 @@ public class OfferMapperImpl implements OfferMapper
 		offer.setId( offerDTO.getId() );
 		offer.setQuantity( offerDTO.getQuantity() );
 		offer.setStatus( statusFromId( offerDTO.getStatusId() ) );
+		offer.setExpiration( offerDTO.getExpiration() );
 
 		return offer;
 	}

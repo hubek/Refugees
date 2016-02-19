@@ -8,6 +8,7 @@ angular.module('refugeesApp')
                 method: 'GET',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
+                    data.expiration = DateUtils.convertDateTimeFromServer(data.expiration);
                     return data;
                 }
             },

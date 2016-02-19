@@ -62,6 +62,7 @@ angular.module('refugeesApp')
                             entity: function () {
                                 return {
                                     quantity: null,
+                                    expiration: null,
                                     id: null
                                 };
                             }

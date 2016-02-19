@@ -23,6 +23,8 @@
             </column>
             <column name="quantity" type="integer"/>
             
+            <column name="expiration" type="timestamp"/>
+            
             <column name="category_id" type="bigint"/>
             <column name="season_id" type="bigint"/>
             <column name="size_id" type="bigint"/>
@@ -32,6 +34,8 @@
             <column name="status_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="offer" columnName="expiration" columnDataType="datetime"/>
+
         
         <addForeignKeyConstraint baseColumnNames="category_id"
                                  baseTableName="offer"

@@ -20,6 +20,7 @@
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="quantity"><span translate="refugeesApp.offer.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expiration"><span translate="refugeesApp.offer.expiration">Expiration</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="categoryId"><span translate="refugeesApp.offer.category">category</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="seasonId"><span translate="refugeesApp.offer.season">season</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="sizeId"><span translate="refugeesApp.offer.size">size</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -34,6 +35,7 @@
                 <tr ng-repeat="offer in offers track by offer.id">
                     <td><a ui-sref="offer.detail({id:offer.id})">{{offer.id}}</a></td>
                     <td>{{offer.quantity}}</td>
+                    <td>{{offer.expiration | date:'medium'}}</td>
                     <td>
                         <a ui-sref="category.detail({id:offer.categoryId})">{{offer.categoryId}}</a>
                     </td>

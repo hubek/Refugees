@@ -29,6 +29,7 @@ angular.module('refugeesApp')
         $scope.clear = function () {
             $scope.offer = {
                 quantity: null,
+                expiration: null,
                 id: null
             };
         };

@@ -26,6 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,9 +48,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class OfferResourceIntTest {
 
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
+
 
     private static final Integer DEFAULT_QUANTITY = 1;
     private static final Integer UPDATED_QUANTITY = 2;
+
+    private static final ZonedDateTime DEFAULT_EXPIRATION = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_EXPIRATION = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_EXPIRATION_STR = dateTimeFormatter.format(DEFAULT_EXPIRATION);
 
     @Inject
     private OfferRepository offerRepository;
@@ -82,6 +92,7 @@ public class OfferResourceIntTest {
     public void initTest() {
         offer = new Offer();
         offer.setQuantity(DEFAULT_QUANTITY);
+        offer.setExpiration(DEFAULT_EXPIRATION);
     }
 
     @Test
@@ -102,6 +113,7 @@ public class OfferResourceIntTest {
         assertThat(offers).hasSize(databaseSizeBeforeCreate + 1);
         Offer testOffer = offers.get(offers.size() - 1);
         assertThat(testOffer.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
+        assertThat(testOffer.getExpiration()).isEqualTo(DEFAULT_EXPIRATION);
     }
 
     @Test
@@ -115,7 +127,8 @@ public class OfferResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(offer.getId().intValue())))
-                .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)));
+                .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
+                .andExpect(jsonPath("$.[*].expiration").value(hasItem(DEFAULT_EXPIRATION_STR)));
     }
 
     @Test
@@ -129,7 +142,8 @@ public class OfferResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(offer.getId().intValue()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY));
+            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
+            .andExpect(jsonPath("$.expiration").value(DEFAULT_EXPIRATION_STR));
     }
 
     @Test
@@ -150,6 +164,7 @@ public class OfferResourceIntTest {
 
         // Update the offer
         offer.setQuantity(UPDATED_QUANTITY);
+        offer.setExpiration(UPDATED_EXPIRATION);
         OfferDTO offerDTO = offerMapper.offerToOfferDTO(offer);
 
         restOfferMockMvc.perform(put("/api/offers")
@@ -162,6 +177,7 @@ public class OfferResourceIntTest {
         assertThat(offers).hasSize(databaseSizeBeforeUpdate);
         Offer testOffer = offers.get(offers.size() - 1);
         assertThat(testOffer.getQuantity()).isEqualTo(UPDATED_QUANTITY);
+        assertThat(testOffer.getExpiration()).isEqualTo(UPDATED_EXPIRATION);
     }
 
     @Test

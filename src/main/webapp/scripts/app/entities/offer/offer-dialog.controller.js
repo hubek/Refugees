@@ -40,4 +40,13 @@ angular.module('refugeesApp').controller('OfferDialogController',
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
+        $scope.datePickerForExpiration = {};
+
+        $scope.datePickerForExpiration.status = {
+            opened: false
+        };
+
+        $scope.datePickerForExpirationOpen = function($event) {
+            $scope.datePickerForExpiration.status.opened = true;
+        };
 }]);

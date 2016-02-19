@@ -2,6 +2,7 @@ package de.zalando.refugees.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.time.ZonedDateTime;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,6 +25,9 @@ public class Offer implements Serializable
 
 	@Column( name = "quantity" )
 	private Integer quantity;
+
+	@Column( name = "expiration" )
+	private ZonedDateTime expiration;
 
 	@ManyToOne
 	@JoinColumn( name = "category_id" )
@@ -65,17 +69,27 @@ public class Offer implements Serializable
 
 	public Integer getQuantity()
 	{
-		if( quantity == null )
-		{
-			quantity = 0;
-		}
-		
 		return quantity;
 	}
 
 	public void setQuantity( Integer quantity )
 	{
+		if ( quantity == null )
+		{
+			quantity = 0;
+		}
+
 		this.quantity = quantity;
+	}
+
+	public ZonedDateTime getExpiration()
+	{
+		return expiration;
+	}
+
+	public void setExpiration( ZonedDateTime expiration )
+	{
+		this.expiration = expiration;
 	}
 
 	public Category getCategory()
@@ -176,6 +190,6 @@ public class Offer implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Offer{" + "id=" + id + ", quantity='" + quantity + "'" + '}';
+		return "Offer{" + "id=" + id + ", quantity='" + quantity + "'" + ", expiration='" + expiration + "'" + '}';
 	}
 }

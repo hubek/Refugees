@@ -1,6 +1,7 @@
 package de.zalando.refugees.web.rest.dto;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -30,6 +31,17 @@ public class OfferDTO implements Serializable
 	private String genderValue;
 	private String organizationName;
 	private String statusValue;
+	private ZonedDateTime expiration;
+
+	public ZonedDateTime getExpiration()
+	{
+		return expiration;
+	}
+
+	public void setExpiration( ZonedDateTime expiration )
+	{
+		this.expiration = expiration;
+	}
 
 	public String getCategoryName()
 	{
