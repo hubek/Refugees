@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -22,6 +23,9 @@ public class Demand implements Serializable
 
 	@Column( name = "quantity" )
 	private Integer quantity;
+
+	@Column( name = "created" )
+	private ZonedDateTime created;
 
 	@ManyToOne
 	@JoinColumn( name = "branch_id" )
@@ -81,11 +85,11 @@ public class Demand implements Serializable
 
 	public void setQuantity( Integer quantity )
 	{
-		if( quantity == null )
+		if ( quantity == null )
 		{
 			quantity = 0;
 		}
-		
+
 		this.quantity = quantity;
 	}
 
@@ -157,6 +161,21 @@ public class Demand implements Serializable
 	public void setStatus( Status status )
 	{
 		this.status = status;
+	}
+
+	public ZonedDateTime getCreated()
+	{
+		return created;
+	}
+
+	public void setCreated( ZonedDateTime created )
+	{
+		if( created == null )
+		{
+			created = ZonedDateTime.now();
+		}
+		
+		this.created = created;
 	}
 
 	@Override

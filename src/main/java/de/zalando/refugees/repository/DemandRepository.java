@@ -2,10 +2,9 @@ package de.zalando.refugees.repository;
 
 import de.zalando.refugees.domain.Demand;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -13,4 +12,5 @@ import java.util.List;
  */
 public interface DemandRepository extends JpaRepository< Demand, Long >, JpaSpecificationExecutor
 {
+	public List< Demand > findByCreatedLessThan( ZonedDateTime lastWeek);
 }

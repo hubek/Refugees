@@ -55,6 +55,11 @@
             "fieldId": 1,
             "fieldName": "quantity",
             "fieldType": "Integer"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20160202213920",

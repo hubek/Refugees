@@ -17,6 +17,7 @@
                 "title": "Demand"
             },
             "quantity": "Quantity",
+            "created": "Created",
             "branch": "Branch",
             "category": "Category",
             "season": "Season",

@@ -40,4 +40,13 @@ angular.module('refugeesApp').controller('DemandDialogController',
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
+        $scope.datePickerForCreated = {};
+
+        $scope.datePickerForCreated.status = {
+            opened: false
+        };
+
+        $scope.datePickerForCreatedOpen = function($event) {
+            $scope.datePickerForCreated.status.opened = true;
+        };
 }]);

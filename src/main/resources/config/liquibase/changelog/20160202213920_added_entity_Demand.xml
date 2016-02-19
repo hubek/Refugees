@@ -23,6 +23,8 @@
             </column>
             <column name="quantity" type="integer"/>
             
+            <column name="created" type="timestamp"/>
+            
             <column name="branch_id" type="bigint"/>
             <column name="category_id" type="bigint"/>
             <column name="season_id" type="bigint"/>
@@ -32,6 +34,8 @@
             <column name="status_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="demand" columnName="created" columnDataType="datetime"/>
+
         
         <addForeignKeyConstraint baseColumnNames="branch_id"
                                  baseTableName="demand"

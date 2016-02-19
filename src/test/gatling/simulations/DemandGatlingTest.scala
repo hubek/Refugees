@@ -80,7 +80,7 @@ class DemandGatlingTest extends Simulation {
             .exec(http("Create new demand")
             .post("/api/demands")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "quantity":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "quantity":"0", "created":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_demand_url")))
             .pause(10)

@@ -111,18 +111,19 @@ public class MailService
 	}
 	
 	@Async
-	public void sendDemandActivationEmail( User user, Long demandId, String baseUrl )
-	{
-		log.debug( "Sending demand activation e-mail to '{}'", user.getEmail() );
-		Locale locale = Locale.forLanguageTag( user.getLangKey() );
+	public void sendDemandActivationEmail(String email, Long demandId, String baseUrl )
+	{	
+		// set locale to en for now
+		Locale locale = Locale.forLanguageTag( "en" );
+		
 		Context context = new Context( locale );
-		context.setVariable( "user", user );
+		context.setVariable( "email", email );
 		context.setVariable( "baseUrl", baseUrl );
 		context.setVariable( "demandId", demandId );
 		
 		String content = templateEngine.process( "demandActivationEmail", context );
 		String subject = messageSource.getMessage( "email.activation.title", null, locale );
-		sendEmail( user.getEmail(), subject, content, false, true );
+		sendEmail( email, subject, content, false, true );
 	}
 
 }

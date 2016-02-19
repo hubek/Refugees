@@ -1,6 +1,7 @@
 package de.zalando.refugees.web.rest.dto;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -16,7 +17,7 @@ public class DemandDTO implements Serializable
 	private Integer quantity;
 
 	private Long branchId;
-	
+
 	private Long categoryId;
 
 	private String categoryName;
@@ -40,8 +41,20 @@ public class DemandDTO implements Serializable
 	private Double distance;
 
 	private Long statusId;
-	
+
 	private String statusValue;
+
+	private ZonedDateTime created;
+
+	public ZonedDateTime getCreated()
+	{
+		return created;
+	}
+
+	public void setCreated( ZonedDateTime created )
+	{
+		this.created = created;
+	}
 
 	public String getStatusValue()
 	{

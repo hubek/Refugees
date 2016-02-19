@@ -19,6 +19,14 @@
                     ng-model="demand.quantity"
                      />
         </div>
+        <div class="form-group">
+            <label class="control-label" translate="refugeesApp.demand.created" for="field_created">Created</label>
+            <input id="field_created" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="demand.created" is-open="datePickerForCreated.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
 
         <div class="form-group">
             <label translate="refugeesApp.demand.branch" for="field_branch">branch</label>

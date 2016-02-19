@@ -29,6 +29,7 @@ angular.module('refugeesApp')
         $scope.clear = function () {
             $scope.demand = {
                 quantity: null,
+                created: null,
                 id: null
             };
         };

@@ -10,8 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import de.zalando.refugees.domain.Demand;
 import de.zalando.refugees.domain.Offer;
+import de.zalando.refugees.domain.Status;
+import de.zalando.refugees.repository.DemandRepository;
 import de.zalando.refugees.repository.OfferRepository;
+import de.zalando.refugees.repository.StatusRepository;
 import de.zalando.refugees.web.rest.AccountResource;
 
 @Component
@@ -23,7 +27,13 @@ public class HouskeeperService
 	private OfferRepository offerRepository;
 	
 	@Inject
+	private DemandRepository demandRepository;
+	
+	@Inject
 	private MailService mailService;
+	
+	@Inject
+	private StatusRepository statusRepository;
 
 	/**
 	 * Clean up the expired offers
@@ -42,6 +52,52 @@ public class HouskeeperService
 		}
 
 		offerRepository.flush();
+	}
+	
+	/**
+	 * Deactivate the expired demands
+	 */
+	//@Scheduled(cron = "0 0 0 * * ?")
+	@Scheduled(fixedRate= 5000)
+	public void deactivateDemands()
+	{
+		// get deactivate status
+		Status deactivatedStatus = statusRepository.findByValue( "DEACTIVATED" ).get( 0 );
+		
+		// get last week time 
+		ZonedDateTime currentTime = ZonedDateTime.now();
+		currentTime = currentTime.minusDays( 7 );
+
+		// get expired demands
+		List< Demand > expiredDemands = demandRepository.findByCreatedLessThan( currentTime );
+
+		// deactivate them
+		for ( Demand demand : expiredDemands )
+		{
+			demand.setStatus( deactivatedStatus );
+			
+			demandRepository.save( demand );
+			
+			sendDemandActivationEmail( demand );
+			
+			log.warn( "demand {} Has been expired and deactivated ", demand.getId() );
+		}
+
+		demandRepository.flush();
+	}
+	
+	
+	/**
+	 * Send activation email to Demand owner
+	 * @param demand
+	 */
+	private void sendDemandActivationEmail( Demand demand)
+	{
+		String email = demand.getBranch().getEmail();
+		Long demandId = demand.getId();
+		String baseUrl = "here goes the api url";
+		
+		mailService.sendDemandActivationEmail( email, demandId, baseUrl );
 	}
 
 }

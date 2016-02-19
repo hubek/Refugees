@@ -20,6 +20,7 @@
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="quantity"><span translate="refugeesApp.demand.quantity">Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="created"><span translate="refugeesApp.demand.created">Created</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="branchId"><span translate="refugeesApp.demand.branch">branch</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="categoryName"><span translate="refugeesApp.demand.category">category</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="seasonValue"><span translate="refugeesApp.demand.season">season</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -34,6 +35,7 @@
                 <tr ng-repeat="demand in demands track by demand.id">
                     <td><a ui-sref="demand.detail({id:demand.id})">{{demand.id}}</a></td>
                     <td>{{demand.quantity}}</td>
+                    <td>{{demand.created | date:'medium'}}</td>
                     <td>
                         <a ui-sref="branch.detail({id:demand.branchId})">{{demand.branchId}}</a>
                     </td>

@@ -46,6 +46,7 @@ public class DemandMapperImpl implements DemandMapper
 		demandDTO.setId( demand.getId() );
 		demandDTO.setQuantity( demand.getQuantity() );
 		demandDTO.setDistance( demand.getDistance() );
+		demandDTO.setCreated( demand.getCreated() );
 
 		return demandDTO;
 	}
@@ -70,6 +71,7 @@ public class DemandMapperImpl implements DemandMapper
 		demand.setId( demandDTO.getId() );
 		demand.setQuantity( demandDTO.getQuantity() );
 		demand.setDistance( demand.getDistance() );
+		demand.setCreated( demandDTO.getCreated() );
 
 		return demand;
 	}
@@ -113,7 +115,7 @@ public class DemandMapperImpl implements DemandMapper
 		}
 		return id;
 	}
-	
+
 	private String demandStatus( Demand demand )
 	{
 

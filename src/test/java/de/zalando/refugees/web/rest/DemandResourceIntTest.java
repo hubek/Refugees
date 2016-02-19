@@ -26,6 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,9 +48,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class DemandResourceIntTest {
 
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
+
 
     private static final Integer DEFAULT_QUANTITY = 1;
     private static final Integer UPDATED_QUANTITY = 2;
+
+    private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_CREATED_STR = dateTimeFormatter.format(DEFAULT_CREATED);
 
     @Inject
     private DemandRepository demandRepository;
@@ -82,6 +92,7 @@ public class DemandResourceIntTest {
     public void initTest() {
         demand = new Demand();
         demand.setQuantity(DEFAULT_QUANTITY);
+        demand.setCreated(DEFAULT_CREATED);
     }
 
     @Test
@@ -102,6 +113,7 @@ public class DemandResourceIntTest {
         assertThat(demands).hasSize(databaseSizeBeforeCreate + 1);
         Demand testDemand = demands.get(demands.size() - 1);
         assertThat(testDemand.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
+        assertThat(testDemand.getCreated()).isEqualTo(DEFAULT_CREATED);
     }
 
     @Test
@@ -115,7 +127,8 @@ public class DemandResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(demand.getId().intValue())))
-                .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)));
+                .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
+                .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED_STR)));
     }
 
     @Test
@@ -129,7 +142,8 @@ public class DemandResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(demand.getId().intValue()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY));
+            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED_STR));
     }
 
     @Test
@@ -150,6 +164,7 @@ public class DemandResourceIntTest {
 
         // Update the demand
         demand.setQuantity(UPDATED_QUANTITY);
+        demand.setCreated(UPDATED_CREATED);
         DemandDTO demandDTO = demandMapper.demandToDemandDTO(demand);
 
         restDemandMockMvc.perform(put("/api/demands")
@@ -162,6 +177,7 @@ public class DemandResourceIntTest {
         assertThat(demands).hasSize(databaseSizeBeforeUpdate);
         Demand testDemand = demands.get(demands.size() - 1);
         assertThat(testDemand.getQuantity()).isEqualTo(UPDATED_QUANTITY);
+        assertThat(testDemand.getCreated()).isEqualTo(UPDATED_CREATED);
     }
 
     @Test
