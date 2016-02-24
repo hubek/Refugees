@@ -55,6 +55,10 @@ server:
 # ===================================================================
 
 jhipster:
+    cors:
+      allowedOrigins: "*"
+      allowedMethods: GET, POST, HEAD, PUT, DELETE
+      
     http:
         cache: # Used by the CachingHttpHeadersFilter
             timeToLiveInDays: 31

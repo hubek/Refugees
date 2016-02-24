@@ -57,8 +57,7 @@ public class HouskeeperService
 	/**
 	 * Deactivate the expired demands
 	 */
-	//@Scheduled(cron = "0 0 0 * * ?")
-	@Scheduled(fixedRate= 5000)
+	@Scheduled(cron = "0 0 0 * * ?")
 	public void deactivateDemands()
 	{
 		// get deactivate status
